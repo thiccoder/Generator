@@ -9,6 +9,8 @@ namespace Generator
         public List<TreeNode> treeNodes = new();
         public List<Control> controls = new();
         public int currentIdx;
+        public Word.Application WordApp = new() {Visible=false};
+        public Dictionary<Field, Tuple<int, int>> Places = new();
         public MainForm()
         {
             InitializeComponent();
@@ -30,7 +32,7 @@ namespace Generator
             XmlDocument doc = new();
             string fileName = Environment.CurrentDirectory + "\\Template.xml";
             doc.Load(fileName);
-            treeView1.Nodes.Clear();
+            treeView.Nodes.Clear();
             ParseNodes(doc.DocumentElement);
             TreeNode[] nodes = new TreeNode[fields.Count];
             for (int i = 0; i < nodes.Length; i++)
@@ -110,44 +112,77 @@ namespace Generator
                 //nodes[i].Nodes.Add(new TreeNode("Options: " + fields[i].options.ToArray().ToString()));
                 //nodes[i].Nodes.Add(new TreeNode("Type: " + fields[i].Type.ToString()));
             }
-            treeView1.Nodes.AddRange(nodes);
+            treeView.Nodes.AddRange(nodes);
             currentIdx = 0;
-            treeView1.SelectedNode = nodes[0];
+            treeView.SelectedNode = nodes[0];
         }
-
+        public void Convert(Word.Document doc, string outFile, Word.WdSaveFormat format)
+        {
+            object oMissing = Type.Missing;
+            object oOutput = outFile;
+            object oFormat = format;
+            doc.SaveAs(ref oOutput, ref oFormat, ref oMissing, ref oMissing,
+                ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
+                ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing
+                );
+        }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            mainSplit.IsSplitterFixed = true;
             ReadXML();
-        }
-
-        private void Generate(object sender, EventArgs e)
-        {
-            Word.Application app = new();
-            object fileName = Environment.CurrentDirectory + "\\Template.dotx";
-            object missing = Type.Missing;
-            app.Documents.Open(ref fileName);
-            Word.Find find = app.Selection.Find;
-            foreach (Field field in fields) 
+            string inDoc = Environment.CurrentDirectory + "\\Template.dotx";
+            string pdf = Environment.CurrentDirectory + "\\tmp.pdf";
+            Word.Document doc = WordApp.Documents.Open(inDoc);
+            doc.Activate();
+            Convert(doc, pdf, Word.WdSaveFormat.wdFormatPDF);
+            webBrowser.Navigate(pdf);
+            Word.Find find = WordApp.Selection.Find;
+            object oMissing = Type.Missing;
+            object wrap = Word.WdFindWrap.wdFindContinue;
+            foreach (Field field in fields)
             {
                 find.Text = field.Mask;
-                find.Replacement.Text = field.Value;
-                object wrap = Word.WdFindWrap.wdFindContinue;
-                object replace = Word.WdReplace.wdReplaceAll;
-                find.Execute(FindText: missing,
+                find.Execute(FindText: oMissing,
                     MatchCase: true,
                     MatchWholeWord: true,
                     MatchWildcards: false,
-                    MatchSoundsLike: missing,
+                    MatchSoundsLike: oMissing,
                     MatchAllWordForms: false,
                     Forward: true,
                     Wrap: wrap,
                     Format: false,
-                    ReplaceWith: missing, Replace: replace);
+                    ReplaceWith: oMissing, Replace: oMissing);
+                Places[field] = new Tuple<int, int>(WordApp.Selection.Start,WordApp.Selection.End);
             }
-            app.ActiveDocument.SaveAs(FileName: Environment.CurrentDirectory + "\\Result.docx");
-            app.ActiveDocument.Close();
-            app.Quit();
+            doc.Close();
+        }
+
+        private void Generate(object sender, EventArgs e)
+        {
+            
+            object oMissing = Type.Missing;
+            object wrap = Word.WdFindWrap.wdFindContinue;
+            object replace = Word.WdReplace.wdReplaceAll;
+            object oInput = Environment.CurrentDirectory + "\\Template.dotx";
+            Word.Document doc = WordApp.Documents.Open(ref oInput);
+            Word.Find find = WordApp.Selection.Find;
+            foreach (Field field in fields) 
+            {
+                find.Text = field.Mask;
+                find.Replacement.Text = field.Value;
+                find.Execute(FindText: oMissing,
+                    MatchCase: true,
+                    MatchWholeWord: true,
+                    MatchWildcards: false,
+                    MatchSoundsLike: oMissing,
+                    MatchAllWordForms: false,
+                    Forward: true,
+                    Wrap: wrap,
+                    Format: false,
+                    ReplaceWith: oMissing, Replace: replace);
+            }
+            Text = WordApp.Selection.Start.ToString() + ' ' + WordApp.Selection.End.ToString();
+            doc.SaveAs(FileName: Environment.CurrentDirectory + "\\Result.docx");
+            doc.Close();
         }
 
         private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -164,5 +199,12 @@ namespace Generator
             currentIdx = idx;
 
         }
+
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            WordApp.Quit();
+        }
+
     }
 }
