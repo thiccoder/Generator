@@ -4,14 +4,13 @@ namespace Generator
 {
     public class Field
     {
-        public string Mask;
-        public FieldType Type;
+        public string Mask = "";
+        public FieldType Type = FieldType.Text;
         public string Value = "";
-        public string Name;
+        public string Name = "";
         public List<string> options = new();
         public Field(XmlNode start) 
         {
-            Type = FieldType.Text;
             foreach (XmlNode node in start.ChildNodes)
             {
                 if (node.NodeType == XmlNodeType.Text)

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.mainSplit = new System.Windows.Forms.SplitContainer();
-            this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.InputTreeSplit = new System.Windows.Forms.SplitContainer();
+            this.TreeBrowserSplit = new System.Windows.Forms.SplitContainer();
             this.treeView = new System.Windows.Forms.TreeView();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
@@ -39,13 +39,13 @@
             this.mainSplit.Panel1.SuspendLayout();
             this.mainSplit.Panel2.SuspendLayout();
             this.mainSplit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
-            this.splitContainer.Panel2.SuspendLayout();
-            this.splitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InputTreeSplit)).BeginInit();
+            this.InputTreeSplit.Panel2.SuspendLayout();
+            this.InputTreeSplit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeBrowserSplit)).BeginInit();
+            this.TreeBrowserSplit.Panel1.SuspendLayout();
+            this.TreeBrowserSplit.Panel2.SuspendLayout();
+            this.TreeBrowserSplit.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +59,7 @@
             // 
             // mainSplit.Panel1
             // 
-            this.mainSplit.Panel1.Controls.Add(this.splitContainer);
+            this.mainSplit.Panel1.Controls.Add(this.InputTreeSplit);
             // 
             // mainSplit.Panel2
             // 
@@ -68,45 +68,42 @@
             this.mainSplit.SplitterDistance = 455;
             this.mainSplit.TabIndex = 1;
             // 
-            // splitContainer
+            // InputTreeSplit
             // 
-            this.splitContainer.Cursor = System.Windows.Forms.Cursors.VSplit;
-            this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer.Name = "splitContainer";
+            this.InputTreeSplit.Cursor = System.Windows.Forms.Cursors.VSplit;
+            this.InputTreeSplit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InputTreeSplit.Location = new System.Drawing.Point(0, 0);
+            this.InputTreeSplit.Name = "InputTreeSplit";
             // 
-            // splitContainer.Panel1
+            // InputTreeSplit.Panel2
             // 
-            
+            this.InputTreeSplit.Panel2.Controls.Add(this.TreeBrowserSplit);
+            this.InputTreeSplit.Size = new System.Drawing.Size(985, 455);
+            this.InputTreeSplit.SplitterDistance = 360;
+            this.InputTreeSplit.TabIndex = 0;
             // 
-            // splitContainer.Panel2
+            // TreeBrowserSplit
             // 
-            this.splitContainer.Panel2.Controls.Add(this.splitContainer1);
-            this.splitContainer.Size = new System.Drawing.Size(985, 455);
-            this.splitContainer.SplitterDistance = 360;
-            this.splitContainer.TabIndex = 0;
+            this.TreeBrowserSplit.Cursor = System.Windows.Forms.Cursors.VSplit;
+            this.TreeBrowserSplit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TreeBrowserSplit.Location = new System.Drawing.Point(0, 0);
+            this.TreeBrowserSplit.Name = "TreeBrowserSplit";
             // 
-            // splitContainer1
+            // TreeBrowserSplit.Panel1
             // 
-            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.TreeBrowserSplit.Panel1.Controls.Add(this.treeView);
             // 
-            // splitContainer1.Panel1
+            // TreeBrowserSplit.Panel2
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.webBrowser);
-            this.splitContainer1.Size = new System.Drawing.Size(621, 455);
-            this.splitContainer1.SplitterDistance = 216;
-            this.splitContainer1.TabIndex = 0;
+            this.TreeBrowserSplit.Panel2.Controls.Add(this.webBrowser);
+            this.TreeBrowserSplit.Size = new System.Drawing.Size(621, 455);
+            this.TreeBrowserSplit.SplitterDistance = 216;
+            this.TreeBrowserSplit.TabIndex = 0;
             // 
             // treeView
             // 
             this.treeView.BackColor = System.Drawing.SystemColors.Control;
+            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView.HideSelection = false;
             this.treeView.LineColor = System.Drawing.Color.Gray;
@@ -114,6 +111,7 @@
             this.treeView.Name = "treeView";
             this.treeView.Size = new System.Drawing.Size(216, 455);
             this.treeView.TabIndex = 1;
+            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_AfterSelect);
             // 
             // webBrowser
             // 
@@ -122,6 +120,7 @@
             this.webBrowser.Name = "webBrowser";
             this.webBrowser.Size = new System.Drawing.Size(401, 455);
             this.webBrowser.TabIndex = 2;
+            this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebBrowser_DocumentCompleted);
             // 
             // toolStrip
             // 
@@ -168,13 +167,13 @@
             this.mainSplit.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplit)).EndInit();
             this.mainSplit.ResumeLayout(false);
-            this.splitContainer.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
-            this.splitContainer.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.InputTreeSplit.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.InputTreeSplit)).EndInit();
+            this.InputTreeSplit.ResumeLayout(false);
+            this.TreeBrowserSplit.Panel1.ResumeLayout(false);
+            this.TreeBrowserSplit.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TreeBrowserSplit)).EndInit();
+            this.TreeBrowserSplit.ResumeLayout(false);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -183,10 +182,10 @@
 
         #endregion
         private SplitContainer mainSplit;
-        private SplitContainer splitContainer;
+        private SplitContainer InputTreeSplit;
         private ToolStrip toolStrip;
         private ToolStripButton generateButton;
-        private SplitContainer splitContainer1;
+        private SplitContainer TreeBrowserSplit;
         private TreeView treeView;
         private WebBrowser webBrowser;
     }

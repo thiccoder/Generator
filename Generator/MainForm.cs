@@ -1,21 +1,25 @@
 ﻿using Word = Microsoft.Office.Interop.Word;
 using System.Xml;
+using MSHTML;
 
 namespace Generator
 {
     public partial class MainForm : Form
     {
-        public List<Field> fields = new();
-        public List<TreeNode> treeNodes = new();
-        public List<Control> controls = new();
-        public int currentIdx;
-        public Word.Application WordApp = new() {Visible=false};
-        public Dictionary<Field, Tuple<int, int>> Places = new();
+
+        private static readonly Word.Application wordApp = new() { Visible = false };
+        private static readonly List<Field> fields = new();
+        private static readonly List<TreeNode> treeNodes = new();
+        private static readonly List<Control> controls = new();
+        private static readonly Dictionary<Field,IHTMLTxtRange> ranges = new();
+        private int currentIdx = 0;
+        private static readonly string files = Environment.CurrentDirectory + "\\..\\..\\..\\files";
+
         public MainForm()
         {
             InitializeComponent();
         }
-        public void ParseNodes(XmlNode xmlNode)
+        private void ParseNodes(XmlNode xmlNode)
         {
             if (xmlNode.Name == "field")
             {
@@ -27,10 +31,10 @@ namespace Generator
                         ParseNodes(node);
                 }
         }
-        public void ReadXML()
+        private void ReadXML()
         {
             XmlDocument doc = new();
-            string fileName = Environment.CurrentDirectory + "\\Template.xml";
+            string fileName = files + "\\Template.xml";
             doc.Load(fileName);
             treeView.Nodes.Clear();
             ParseNodes(doc.DocumentElement);
@@ -50,7 +54,7 @@ namespace Generator
                             Dock = DockStyle.Fill,
                             Location = new Point(0, 0),
                             Name = "control",
-                            Size = new Size(603, 483),
+                            Size = new Size(500, 500),
                             TabIndex = 0,
                             Enabled = false,
                             Visible = false
@@ -60,14 +64,15 @@ namespace Generator
                     case FieldType.Date:
                         MonthCalendar TBD = new()
                         {
-                            CalendarDimensions = new Size(3, 3),
+                            CalendarDimensions = new Size(3, 4),
                             Dock = DockStyle.Fill,
                             Location = new Point(0, 0),
                             MaxSelectionCount = 1,
                             Name = "control",
                             TabIndex = 0,
                             Enabled = false,
-                            Visible = false
+                            Visible = false,
+                            BackColor = SystemColors.Control
                         };
                         control = TBD;
                         break;
@@ -78,7 +83,7 @@ namespace Generator
                             FormattingEnabled = true,
                             Location = new Point(0, 0),
                             Name = "control",
-                            Size = new Size(500, 23),
+                            Size = new Size(500, 25),
                             TabIndex = 0,
                             Enabled = false,
                             Visible = false
@@ -97,7 +102,7 @@ namespace Generator
                             Location = new Point(0, 0),
                             Multiline = true,
                             Name = "control",
-                            Size = new Size(603, 483),
+                            Size = new Size(500, 500),
                             TabIndex = 0,
                             Enabled = false,
                             Visible = false
@@ -106,7 +111,7 @@ namespace Generator
                         break;
                 }
                 controls.Add(control);
-                splitContainer.Panel1.Controls.Add(control);
+                InputTreeSplit.Panel1.Controls.Add(control);
                 //nodes[i].Nodes.Add(new TreeNode("Mask: " + fields[i].Mask));
                 //nodes[i].Nodes.Add(new TreeNode("Value: " + fields[i].Value));
                 //nodes[i].Nodes.Add(new TreeNode("Options: " + fields[i].options.ToArray().ToString()));
@@ -116,7 +121,7 @@ namespace Generator
             currentIdx = 0;
             treeView.SelectedNode = nodes[0];
         }
-        public void Convert(Word.Document doc, string outFile, Word.WdSaveFormat format)
+        private static void Convert(Word.Document doc, string outFile, Word.WdSaveFormat format)
         {
             object oMissing = Type.Missing;
             object oOutput = outFile;
@@ -129,31 +134,13 @@ namespace Generator
         private void MainForm_Load(object sender, EventArgs e)
         {
             ReadXML();
-            string inDoc = Environment.CurrentDirectory + "\\Template.dotx";
-            string pdf = Environment.CurrentDirectory + "\\tmp.pdf";
-            Word.Document doc = WordApp.Documents.Open(inDoc);
+            string inDoc = files + "\\Template.dotx";
+            string html = files + "\\tmp.html";
+            Word.Document doc = wordApp.Documents.Open(inDoc);
             doc.Activate();
-            Convert(doc, pdf, Word.WdSaveFormat.wdFormatPDF);
-            webBrowser.Navigate(pdf);
-            Word.Find find = WordApp.Selection.Find;
-            object oMissing = Type.Missing;
-            object wrap = Word.WdFindWrap.wdFindContinue;
-            foreach (Field field in fields)
-            {
-                find.Text = field.Mask;
-                find.Execute(FindText: oMissing,
-                    MatchCase: true,
-                    MatchWholeWord: true,
-                    MatchWildcards: false,
-                    MatchSoundsLike: oMissing,
-                    MatchAllWordForms: false,
-                    Forward: true,
-                    Wrap: wrap,
-                    Format: false,
-                    ReplaceWith: oMissing, Replace: oMissing);
-                Places[field] = new Tuple<int, int>(WordApp.Selection.Start,WordApp.Selection.End);
-            }
+            Convert(doc, html, Word.WdSaveFormat.wdFormatHTML);
             doc.Close();
+            webBrowser.Navigate(files + "\\tmp.html");
         }
 
         private void Generate(object sender, EventArgs e)
@@ -162,9 +149,9 @@ namespace Generator
             object oMissing = Type.Missing;
             object wrap = Word.WdFindWrap.wdFindContinue;
             object replace = Word.WdReplace.wdReplaceAll;
-            object oInput = Environment.CurrentDirectory + "\\Template.dotx";
-            Word.Document doc = WordApp.Documents.Open(ref oInput);
-            Word.Find find = WordApp.Selection.Find;
+            object oInput = files + "\\Template.dotx";
+            Word.Document doc = wordApp.Documents.Open(ref oInput);
+            Word.Find find = wordApp.Selection.Find;
             foreach (Field field in fields) 
             {
                 find.Text = field.Mask;
@@ -180,8 +167,8 @@ namespace Generator
                     Format: false,
                     ReplaceWith: oMissing, Replace: replace);
             }
-            Text = WordApp.Selection.Start.ToString() + ' ' + WordApp.Selection.End.ToString();
-            doc.SaveAs(FileName: Environment.CurrentDirectory + "\\Result.docx");
+            Text = wordApp.Selection.Start.ToString() + ' ' + wordApp.Selection.End.ToString();
+            doc.SaveAs(FileName: files + "\\Result.docx");
             doc.Close();
         }
 
@@ -197,14 +184,50 @@ namespace Generator
             controls[idx].Enabled = true;
             controls[idx].Visible = true;
             currentIdx = idx;
+            cf = fields[currentIdx];
+            if (ranges.ContainsKey(cf))
+            {
+                IHTMLTxtRange range = ranges[cf];
+                range.pasteHTML(cf.Value);
+                range.collapse();
+                range.moveStart("character",-cf.Value.Length);
+                range.select();
+            }
 
         }
-
-
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WordApp.Quit();
+            wordApp.Quit();
         }
 
+        private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            while (ranges.Count == 0)
+            {
+                
+                if (webBrowser.Document != null)
+                {
+                    if (webBrowser.Document.DomDocument is IHTMLDocument2 doc)
+                    {
+                        if (doc.body is IHTMLBodyElement bodyElement)
+                        {
+                            foreach (Field field in fields)
+                            {
+                                IHTMLTxtRange range = bodyElement.createTextRange();
+                                if (range != null)
+                                {
+                                    string search = field.Mask;
+                                    if (range.findText(search, search.Length, 2))
+                                    {
+                                        ranges[field] = range;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                Text = ranges.Count.ToString();
+            }
+        }
     }
 }
