@@ -1,6 +1,7 @@
 ﻿using Word = Microsoft.Office.Interop.Word;
 using System.Xml;
 using MSHTML;
+using System.IO;
 
 namespace Generator
 {
@@ -31,10 +32,9 @@ namespace Generator
                         ParseNodes(node);
                 }
         }
-        private void ReadXML()
+        private void ReadXML(string fileName)
         {
             XmlDocument doc = new();
-            string fileName = files + "\\Template.xml";
             doc.Load(fileName);
             treeView.Nodes.Clear();
             ParseNodes(doc.DocumentElement);
@@ -133,45 +133,8 @@ namespace Generator
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ReadXML();
-            string inDoc = files + "\\Template.dotx";
-            string html = files + "\\tmp.html";
-            Word.Document doc = wordApp.Documents.Open(inDoc);
-            doc.Activate();
-            Convert(doc, html, Word.WdSaveFormat.wdFormatHTML);
-            doc.Close();
-            webBrowser.Navigate(files + "\\tmp.html");
-        }
 
-        private void Generate(object sender, EventArgs e)
-        {
-            
-            object oMissing = Type.Missing;
-            object wrap = Word.WdFindWrap.wdFindContinue;
-            object replace = Word.WdReplace.wdReplaceAll;
-            object oInput = files + "\\Template.dotx";
-            Word.Document doc = wordApp.Documents.Open(ref oInput);
-            Word.Find find = wordApp.Selection.Find;
-            foreach (Field field in fields) 
-            {
-                find.Text = field.Mask;
-                find.Replacement.Text = field.Value;
-                find.Execute(FindText: oMissing,
-                    MatchCase: true,
-                    MatchWholeWord: true,
-                    MatchWildcards: false,
-                    MatchSoundsLike: oMissing,
-                    MatchAllWordForms: false,
-                    Forward: true,
-                    Wrap: wrap,
-                    Format: false,
-                    ReplaceWith: oMissing, Replace: replace);
-            }
-            Text = wordApp.Selection.Start.ToString() + ' ' + wordApp.Selection.End.ToString();
-            doc.SaveAs(FileName: files + "\\Result.docx");
-            doc.Close();
         }
-
         private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             int idx = treeNodes.IndexOf(e.Node);
@@ -199,12 +162,10 @@ namespace Generator
         {
             wordApp.Quit();
         }
-
         private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             while (ranges.Count == 0)
             {
-                
                 if (webBrowser.Document != null)
                 {
                     if (webBrowser.Document.DomDocument is IHTMLDocument2 doc)
@@ -228,6 +189,76 @@ namespace Generator
                 }
                 Text = ranges.Count.ToString();
             }
+        }
+
+        private void OpenTSMI_Click(object sender, EventArgs e)
+        {
+            bool xmlRead = false;
+            bool dotxRead = false;
+            while (!(xmlRead && dotxRead)) 
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = openFileDialog.FileName;
+                    if (!xmlRead)
+                    {
+                        ReadXML(fileName);
+                        xmlRead = true;
+                        openFileDialog.Filter = openFileDialog.Filter.Replace("XML document files (*.xml)|*.xml", "Word Template files (*.dotx)|*.dotx");
+                    }
+                    else if (!dotxRead)
+                    {
+                        string html = files + "\\tmp.html";
+                        Word.Document doc = wordApp.Documents.Open(fileName);
+                        doc.Activate();
+                        Convert(doc, html, Word.WdSaveFormat.wdFormatHTML);
+                        doc.Close();
+                        webBrowser.Navigate(files + "\\tmp.html");
+                        dotxRead = true;
+                        openFileDialog.Filter = openFileDialog.Filter.Replace("Word Template files (*.dotx)|*.dotx|", "");
+                    }
+                }
+            }
+        }
+        private void QuitTSMI_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void SaveTSMI_Click(object sender, EventArgs e)
+        {
+            object oMissing = Type.Missing;
+            object wrap = Word.WdFindWrap.wdFindContinue;
+            object replace = Word.WdReplace.wdReplaceAll;
+            object oInput = files + "\\Template.dotx";
+            Word.Document doc = wordApp.Documents.Open(ref oInput);
+            Word.Find find = wordApp.Selection.Find;
+            foreach (Field field in fields)
+            {
+                find.Text = field.Mask;
+                find.Replacement.Text = field.Value;
+                find.Execute(FindText: oMissing,
+                    MatchCase: true,
+                    MatchWholeWord: true,
+                    MatchWildcards: false,
+                    MatchSoundsLike: oMissing,
+                    MatchAllWordForms: false,
+                    Forward: true,
+                    Wrap: wrap,
+                    Format: false,
+                    ReplaceWith: oMissing, Replace: replace);
+            }
+            Text = wordApp.Selection.Start.ToString() + ' ' + wordApp.Selection.End.ToString();
+            doc.SaveAs(FileName: files + "\\Result.docx");
+            doc.Close();
+        }
+        private void SaveAsTSMI_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InputTreeSplit_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
         }
     }
 }
