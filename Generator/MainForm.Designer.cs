@@ -120,6 +120,7 @@
             this.saveTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveTSMI.Size = new System.Drawing.Size(190, 22);
             this.saveTSMI.Text = "Save";
+            this.saveTSMI.Click += new System.EventHandler(this.SaveTSMI_Click);
             // 
             // saveAsTSMI
             // 
@@ -128,6 +129,7 @@
             | System.Windows.Forms.Keys.S)));
             this.saveAsTSMI.Size = new System.Drawing.Size(190, 22);
             this.saveAsTSMI.Text = "Save as";
+            this.saveAsTSMI.Click += new System.EventHandler(this.SaveAsTSMI_Click);
             // 
             // quitTSMI
             // 
@@ -168,7 +170,6 @@
             this.InputTreeSplit.Size = new System.Drawing.Size(985, 460);
             this.InputTreeSplit.SplitterDistance = 360;
             this.InputTreeSplit.TabIndex = 0;
-            this.InputTreeSplit.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.InputTreeSplit_SplitterMoved);
             // 
             // TreeBrowserSplit
             // 
@@ -225,6 +226,10 @@
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Filter = "XML document files (*.xml)|*.xml|All files (*.*)|*.*";
             // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "Word document files (*.docx)|*.docx|All files (*.*)|*.*";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -232,11 +237,11 @@
             this.ClientSize = new System.Drawing.Size(985, 489);
             this.Controls.Add(this.mainSplit);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Icon = global::Generator.Properties.Resources.Icon;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Generator";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.mainSplit.Panel1.ResumeLayout(false);
             this.mainSplit.Panel1.PerformLayout();
             this.mainSplit.Panel2.ResumeLayout(false);

@@ -8,14 +8,16 @@ namespace Generator
     public partial class MainForm : Form
     {
 
-        private static readonly Word.Application wordApp = new() { Visible = false };
-        private static readonly List<Field> fields = new();
-        private static readonly List<TreeNode> treeNodes = new();
-        private static readonly List<Control> controls = new();
-        private static readonly Dictionary<Field,IHTMLTxtRange> ranges = new();
+        private readonly Word.Application wordApp = new() { Visible = false };
+        private readonly List<Field> fields = new();
+        private readonly List<TreeNode> treeNodes = new();
+        private readonly List<Control> controls = new();
+        private readonly Dictionary<Field, IHTMLTxtRange> ranges = new();
         private int currentIdx = 0;
-        private static readonly string files = Environment.CurrentDirectory + "\\..\\..\\..\\files";
-
+        private readonly string files = Environment.CurrentDirectory + "\\..\\..\\..\\files";
+        private string CurrentTemplate = "";
+        private string CurrentXmlFile = "";
+        private string CurrentSaveFile = "";
         public MainForm()
         {
             InitializeComponent();
@@ -121,19 +123,15 @@ namespace Generator
             currentIdx = 0;
             treeView.SelectedNode = nodes[0];
         }
-        private static void Convert(Word.Document doc, string outFile, Word.WdSaveFormat format)
+        private void Convert(Word.Document doc, string outFile, Word.WdSaveFormat format)
         {
             object oMissing = Type.Missing;
             object oOutput = outFile;
             object oFormat = format;
             doc.SaveAs(ref oOutput, ref oFormat, ref oMissing, ref oMissing,
-                ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
-                ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing
-                );
-        }
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
+              ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
+              ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing
+              );
         }
         private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -153,7 +151,7 @@ namespace Generator
                 IHTMLTxtRange range = ranges[cf];
                 range.pasteHTML(cf.Value);
                 range.collapse();
-                range.moveStart("character",-cf.Value.Length);
+                range.moveStart("character", -cf.Value.Length);
                 range.select();
             }
 
@@ -187,7 +185,6 @@ namespace Generator
                         }
                     }
                 }
-                Text = ranges.Count.ToString();
             }
         }
 
@@ -195,13 +192,14 @@ namespace Generator
         {
             bool xmlRead = false;
             bool dotxRead = false;
-            while (!(xmlRead && dotxRead)) 
+            while (!(xmlRead && dotxRead))
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string fileName = openFileDialog.FileName;
                     if (!xmlRead)
                     {
+                        CurrentXmlFile = fileName;
                         ReadXML(fileName);
                         xmlRead = true;
                         openFileDialog.Filter = openFileDialog.Filter.Replace("XML document files (*.xml)|*.xml", "Word Template files (*.dotx)|*.dotx");
@@ -216,6 +214,7 @@ namespace Generator
                         webBrowser.Navigate(files + "\\tmp.html");
                         dotxRead = true;
                         openFileDialog.Filter = openFileDialog.Filter.Replace("Word Template files (*.dotx)|*.dotx|", "");
+                        CurrentTemplate = fileName;
                     }
                 }
             }
@@ -226,10 +225,19 @@ namespace Generator
         }
         private void SaveTSMI_Click(object sender, EventArgs e)
         {
+            Text = "1";
+            if (CurrentSaveFile == "" && saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                CurrentSaveFile = saveFileDialog.FileName;
+            }
+            else if (CurrentSaveFile == "") 
+            {
+                return;
+            }
             object oMissing = Type.Missing;
             object wrap = Word.WdFindWrap.wdFindContinue;
             object replace = Word.WdReplace.wdReplaceAll;
-            object oInput = files + "\\Template.dotx";
+            object oInput = CurrentTemplate;
             Word.Document doc = wordApp.Documents.Open(ref oInput);
             Word.Find find = wordApp.Selection.Find;
             foreach (Field field in fields)
@@ -237,27 +245,24 @@ namespace Generator
                 find.Text = field.Mask;
                 find.Replacement.Text = field.Value;
                 find.Execute(FindText: oMissing,
-                    MatchCase: true,
-                    MatchWholeWord: true,
-                    MatchWildcards: false,
-                    MatchSoundsLike: oMissing,
-                    MatchAllWordForms: false,
-                    Forward: true,
-                    Wrap: wrap,
-                    Format: false,
-                    ReplaceWith: oMissing, Replace: replace);
+                  MatchCase: true,
+                  MatchWholeWord: true,
+                  MatchWildcards: false,
+                  MatchSoundsLike: oMissing,
+                  MatchAllWordForms: false,
+                  Forward: true,
+                  Wrap: wrap,
+                  Format: false,
+                  ReplaceWith: oMissing, Replace: replace);
             }
-            Text = wordApp.Selection.Start.ToString() + ' ' + wordApp.Selection.End.ToString();
-            doc.SaveAs(FileName: files + "\\Result.docx");
+            doc.SaveAs(FileName: CurrentSaveFile);
             doc.Close();
         }
         private void SaveAsTSMI_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void InputTreeSplit_SplitterMoved(object sender, SplitterEventArgs e)
-        {
+            CurrentSaveFile = "";
+            SaveTSMI_Click(sender, e);
 
         }
     }
