@@ -114,16 +114,12 @@ namespace Generator
                 }
                 controls.Add(control);
                 InputTreeSplit.Panel1.Controls.Add(control);
-                //nodes[i].Nodes.Add(new TreeNode("Mask: " + fields[i].Mask));
-                //nodes[i].Nodes.Add(new TreeNode("Value: " + fields[i].Value));
-                //nodes[i].Nodes.Add(new TreeNode("Options: " + fields[i].options.ToArray().ToString()));
-                //nodes[i].Nodes.Add(new TreeNode("Type: " + fields[i].Type.ToString()));
             }
             treeView.Nodes.AddRange(nodes);
             currentIdx = 0;
             treeView.SelectedNode = nodes[0];
         }
-        private void Convert(Word.Document doc, string outFile, Word.WdSaveFormat format)
+        private static void Convert(Word.Document doc, string outFile, Word.WdSaveFormat format)
         {
             object oMissing = Type.Missing;
             object oOutput = outFile;
@@ -225,7 +221,6 @@ namespace Generator
         }
         private void SaveTSMI_Click(object sender, EventArgs e)
         {
-            Text = "1";
             if (CurrentSaveFile == "" && saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 CurrentSaveFile = saveFileDialog.FileName;
