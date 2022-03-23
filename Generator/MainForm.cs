@@ -17,6 +17,7 @@ namespace Generator
         private readonly string files = Environment.CurrentDirectory + "\\..\\..\\..\\files";
         private string CurrentTemplate = "";
         private string CurrentXmlFile = "";
+        private string CurrentHtmlFile = "";
         private string CurrentSaveFile = "";
         public MainForm()
         {
@@ -155,6 +156,7 @@ namespace Generator
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             wordApp.Quit();
+            File.Delete(CurrentHtmlFile);
         }
         private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
@@ -202,12 +204,12 @@ namespace Generator
                     }
                     else if (!dotxRead)
                     {
-                        string html = files + "\\tmp.html";
+                        CurrentHtmlFile = files + "\\tmp.html";
                         Word.Document doc = wordApp.Documents.Open(fileName);
                         doc.Activate();
-                        Convert(doc, html, Word.WdSaveFormat.wdFormatHTML);
+                        Convert(doc, CurrentHtmlFile, Word.WdSaveFormat.wdFormatHTML);
                         doc.Close();
-                        webBrowser.Navigate(files + "\\tmp.html");
+                        webBrowser.Navigate(CurrentHtmlFile);
                         dotxRead = true;
                         openFileDialog.Filter = openFileDialog.Filter.Replace("Word Template files (*.dotx)|*.dotx|", "");
                         CurrentTemplate = fileName;
