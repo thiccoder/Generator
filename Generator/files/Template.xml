@@ -1,147 +1,147 @@
-п»ї<doc>
+<doc>
 	<field>
-	Р”Р°С‚Р°
+	Дата
 	<type>date</type>
 	<mask>[%date%]</mask>
 	</field>
 	<field>
-	РќР°Р·РІР°РЅРёРµ
-	<type>name</type>
+	Название
+	<type>text</type>
 	<mask>[%name%]</mask>
 	</field>
 	<field>
-	РќР°РїСЂР°РІР»РµРЅРЅРѕСЃС‚СЊ
-	<type>direction</type>
+	Направленность
+	<type>text</type>
 	<mask>[%direction%]</mask>
 	</field>
 	<field>
-	Р’РѕР·СЂР°СЃС‚
-	<type>age</type>
+	Возраст
+	<type>number</type>
 	<mask>[%age%]</mask>
 	</field>
 	<field>
-	Р’СЂРµРјСЏ
-	<type>time</type>
+	Время
+	<type>number</type>
 	<mask>[%time%]</mask>
 	</field>
 	<field>
-	РџСЂРµРїРѕРґРѕРІР°С‚РµР»СЊ
-	<type>prepod</type>
+	Преподователь
+	<type>text</type>
 	<mask>[%prepod%]</mask>
 	</field>
 	<field>
-	Р“РѕРґ
-	<type>year</type>
+	Год
+	<type>number</type>
 	<mask>[%year%]</mask>
 	</field>
 	<field>
-	РЈСЂРѕРІРµРЅСЊ
-	<type>level</type>
+	Уровень
+	<type>text</type>
 	<mask>[%level%]</mask>
 	</field>
 	<field>
-	РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєР° РїСЂРѕРіСЂР°РјРјС‹
-	<type>userinput1</type>
+	Характеристика программы
+	<type>text</type>
 	<mask>[%userinput1%]</mask>
 	</field>
 	<field>
-	Р§РµРјСѓ СЃРїРѕСЃРѕР±СЃС‚РІСѓРµС‚?
-	<type>userinput2</type>
+	Чему способствует?
+	<type>text</type>
 	<mask>[%userinput2%]</mask>
 	</field>
 	<field>
-	РђРєС‚СѓР°Р»СЊРЅРѕСЃС‚СЊ РџСЂРѕРіСЂР°РјРјС‹ РѕР±СѓСЃР»РѕРІР»РµРЅР° С‚РµРј, С‡С‚Рѕ...
-	<type>userinput3</type>
+	Актуальность Программы обусловлена тем, что...
+	<type>text</type>
 	<mask>[%userinput3%]</mask>
 	</field>
 	<field>
-	Р§С‚Рѕ РїСЂРµРґРїРѕР»РѕРіР°РµС‚ РїСЂРѕРіСЂР°РјРјР°?
-	<type>userinput5</type>
+	Что предпологает программа?
+	<type>text</type>
 	<mask>[%userinput5%]</mask>
 	</field>
 	<field>
-	РџСЂРёРЅС†РёРїС‹ РїСЂРѕРіСЂР°РјРјС‹
-	<type>userinput6</type>
+	Принципы программы
+	<type>text</type>
 	<mask>[%userinput6%]</mask>
 	</field>
 	<field>
-	РќРѕРІРёР·РЅР° РїСЂРѕРіСЂР°РјРјС‹ Р·Р°РєР»СЋС‡Р°РµС‚СЃСЏ...
-	<type>userinput7</type>
+	Новизна программы заключается...
+	<type>text</type>
 	<mask>[%userinput7%]</mask>
 	</field>
 	<field>
-	Р¦РµР»СЊ РїСЂРѕРіСЂР°РјРјС‹
-	<type>userinput8</type>
+	Цель программы
+	<type>text</type>
 	<mask>[%userinput8%]</mask>
 	</field>
 	<field>
-	Р—Р°РґР°С‡Рё РѕР±СѓС‡РµРЅРёСЏ
-	<type>userinput9</type>
+	Задачи обучения
+	<type>text</type>
 	<mask>[%userinput9%]</mask>
 	</field>
 	<field>
-	Р Р°Р·РІРёРІР°СЋС‰РёРµ Р·Р°РґР°С‡Рё
-	<type>userinput10</type>
+	Развивающие задачи
+	<type>text</type>
 	<mask>[%userinput10%]</mask>
 	</field>
 	<field>
-	Р’РѕСЃРїРёС‚С‹РІР°СЋС‰РёРµ Р·Р°РґР°С‡Рё
-	<type>userinput11</type>
+	Воспитывающие задачи
+	<type>text</type>
 	<mask>[%userinput11%]</mask>
 	</field>
 	<field>
-	РћС†РµРЅРєР° РїСЂРѕРјРµР¶СѓС‚РѕС‡РЅС‹С… СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РїРѕ С‚РµРјР°Рј
-	<type>userinput12</type>
+	Оценка промежуточных результатов по темам
+	<type>text</type>
 	<mask>[%userinput12%]</mask>
 	</field>
 	<field>
-	РЎСЂРµРґСЃС‚РІРѕ Р·Р°РєСЂРµРїР»РµРЅРёСЏ Рё РїРѕРІС‚РѕСЂРµРЅРёСЏ РїСЂРѕР№РґРµРЅРЅРѕРіРѕ РјР°С‚РµСЂРёР°Р»Р°
-	<type>userinput13</type>
+	Средство закрепления и повторения пройденного материала
+	<type>text</type>
 	<mask>[%userinput13%]</mask>
 	</field>
 	<field>
-	РљР°Рє РїСЂРѕРІРѕРґСЏС‚СЃСЏ Р·Р°РЅСЏС‚РёСЏ
-	<type>userinput14</type>
+	Как проводятся занятия
+	<type>text</type>
 	<mask>[%userinput14%]</mask>
 	</field>
 	<field>
-	РќР° РѕР±СѓС‡РµРЅРёРµ РїРѕ РїСЂРѕРіСЂР°РјРјРµ РїСЂРёРЅРёРјР°СЋС‚СЃСЏ РѕР±СѓС‡Р°СЋС‰РёРµСЃСЏ
-	<type>userinput15</type>
+	На обучение по программе принимаются обучающиеся
+	<type>text</type>
 	<mask>[%userinput15%]</mask>
 	</field>
 	<field>
-	Р§РµР»РѕРІРµРє РІ РіСЂСѓРїРїР°С…
-	<type>humans</type>
+	Человек в группах
+	<type>number</type>
 	<mask>[%humans%]</mask>
 	</field>
 	<field>
-	Р—Р°РЅСЏС‚РёР№ РІ РЅРµРґРµР»СЋ
-	<type>V nedeluy</type>
-	<mask>[%v nedeluy%]</mask>
+	Занятий в неделю
+	<type>number</type>
+	<mask>[%v_nedeluy%]</mask>
 	</field>
 	<field>
-	РџРѕ СЃРєРѕР»СЊРєРѕ С‡Р°СЃРѕРІ
-	<type>chasi</type>
+	По сколько часов
+	<type>number</type>
 	<mask>[%chasi%]</mask>
 	</field>
 	<field>
-	Р¤РѕСЂРјР° РѕР±СѓС‡РµРЅРёСЏ
-	<type>form</type>
+	Форма обучения
+	<type>text</type>
 	<mask>[%form%]</mask>
 	</field>
 	<field>
-	РџСЂРµРґРјРµС‚РЅС‹Рµ СЂРµР·СѓР»СЊС‚Р°С‚С‹
-	<type>userinput16</type>
+	Предметные результаты
+	<type>text</type>
 	<mask>[%userinput16%]</mask>
 	</field>
 	<field>
-	РћР±СѓС‡Р°СЋС‰РёРµСЃСЏ РґРѕР»Р¶РЅС‹ Р·РЅР°С‚СЊ
-	<type>userinput37</type>
+	Обучающиеся должны знать
+	<type>text</type>
 	<mask>[%userinput37%]</mask>
 	</field>
 	<field>
-	РћР±СѓС‡Р°СЋС‰РёРµСЃСЏ РґРѕР»Р¶РЅС‹ СѓРјРµС‚СЊ
-	<type>userinput38</type>
+	Обучающиеся должны уметь
+	<type>text</type>
 	<mask>[%userinput38%]</mask>
 	</field>
 	<field>
@@ -165,148 +165,148 @@
 	<mask>[%userinput20%]</mask>
 	</field>
 	<field>
-	РњРµС‚РѕРґС‹ РїСЂРѕРІРµРґРµРЅРёСЏ Р·Р°РЅСЏС‚РёР№, РїРѕ СѓСЂРѕРІРЅСЋ Р°РєС‚РёРІРЅРѕСЃС‚Рё
-	<type>userinput21</type>
+	Методы проведения занятий, по уровню активности
+	<type>text</type>
 	<mask>[%userinput21%]</mask>
 	</field>
 	<field>
-	РџСЂРёС‘РјС‹ РѕР±СЂР°Р·РѕРІР°С‚РµР»СЊРЅРѕР№ РґРµСЏС‚РµР»СЊРЅРѕСЃС‚Рё
-	<type>userinput39</type>
+	Приёмы образовательной деятельности
+	<type>text</type>
 	<mask>[%userinput39%]</mask>
 	</field>
 	<field>
-	РћСЃРЅРѕРІРЅС‹Рµ РѕР±СЂР°Р·РѕРІР°С‚РµР»СЊРЅС‹Рµ РїСЂРѕС†РµСЃСЃС‹
-	<type>userinput22</type>
+	Основные образовательные процессы
+	<type>text</type>
 	<mask>[%userinput22%]</mask>
 	</field>
 	<field>
-	РњР°С‚РµСЂРёР°Р»СЊРЅРѕ-С‚РµС…РЅРёС‡РµСЃРєРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ РџСЂРѕРіСЂР°РјРјС‹
-	<type>userinput40</type>
+	Материально-техническое обеспечение Программы
+	<type>text</type>
 	<mask>[%userinput40%]</mask>
 	</field>
 	<field>
-	РџРµРґР°РіРѕРіРёС‡РµСЃРєРёРµ С‚РµС…РЅРѕР»РѕРіРёРё
-	<type>userinput23</type>
+	Педагогические технологии
+	<type>text</type>
 	<mask>[%userinput23%]</mask>
 	</field>
 	<field>
-	РћСЃРЅРѕРІРЅС‹Рµ С„РѕСЂРјС‹ РґРµСЏС‚РµР»СЊРЅРѕСЃС‚Рё
-	<type>userinput24</type>
+	Основные формы деятельности
+	<type>text</type>
 	<mask>[%userinput24%]</mask>
 	</field>
 	<field>
-	Р¤РѕСЂРјС‹ РѕСЂРіР°РЅРёР·Р°С†РёРё СѓС‡РµР±РЅС‹С… Р·Р°РЅСЏС‚РёР№ РІ РѕР±С‰РµРј РІРёРґРµ
-	<type>obz form zan</type>
-	<mask>[%obz form zan%]</mask>
+	Формы организации учебных занятий в общем виде
+	<type>text</type>
+	<mask>[%obz_form_zan%]</mask>
 	</field>
 	<field>
-	Р¤РѕСЂРјС‹ РѕРѕСЂРіР°РЅРёР·Р°С†РёРё СѓС‡РµР±РЅС‹С… Р·Р°РЅСЏС‚РёР№(СЃРїРёСЃРѕРє)
-	<type>form zan</type>
-	<mask>[%form zan%]</mask>
+	Формы оорганизации учебных занятий(список)
+	<type>text</type>
+	<mask>[%form_zan%]</mask>
 	</field>
 	<field>
-	РўРёРїС‹ СѓС‡РµР±РЅС‹С… Р·Р°РЅСЏС‚РёР№
-	<type>type zan</type>
-	<mask>[%type zan%]</mask>
+	Типы учебных занятий
+	<type>text</type>
+	<mask>[%type_zan%]</mask>
 	</field>
 	<field>
-	Р¤РѕСЂРјС‹ РєРѕРЅС‚СЂРѕР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РѕСЃРІРѕРµРЅРёСЏ РѕР±С‰РёРµ
-	<type>obz test rezult</type>
-	<mask>[%obz test rezult%]</mask>
+	Формы контроля результатов освоения общие
+	<type>text</type>
+	<mask>[%obz_test _rezult%]</mask>
 	</field>
 	<field>
-	Р¤РѕСЂРјС‹ РєРѕРЅС‚СЂРѕР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚РёРІРЅРѕСЃС‚Рё РїРѕ РґР°С‚Р°Рј-РёРЅС‚РµСЂРІР°Р»Р°Рј
-	<type>test rezult</type>
-	<mask>[%test rezult%]</mask>
+	Формы контроля результативности по датам-интервалам
+	<type>text</type>
+	<mask>[%test_rezult%]</mask>
 	</field>
 	<field>
-	РўРµРєСѓС‰РёР№ РєРѕРЅС‚СЂРѕР»СЊ - СЌС‚Рѕ
-	<type>tek kontr</type>
-	<mask>[%tek kontr%]</mask>
+	Текущий контроль - это
+	<type>text</type>
+	<mask>[%tek_kontr%]</mask>
 	</field>
 	<field>
-	Р’ РєРѕРЅС†Рµ РѕР±СѓС‡РµРЅРёСЏ РЅР° СЃРїРµС†РёР°Р»СЊРЅРѕ Р·Р°РїР»Р°РЅРёСЂРѕРІР°РЅРЅС‹С… РёС‚РѕРіРѕРІС‹С… Р·Р°РЅСЏС‚РёСЏС…...
-	<type>v konze</type>
-	<mask>[%v konze%]</mask>
+	В конце обучения на специально запланированных итоговых занятиях...
+	<type>text</type>
+	<mask>[%v_konze%]</mask>
 	</field>
 	<field>
-	РљСЂРёС‚РµСЂРёРё РѕС†РµРЅРєРё С‚РµРѕСЂРµС‚РёС‡РµСЃРєРѕР№ РїРѕРґРіРѕС‚РѕРІРєРё
-	<type>krit teor</type>
-	<mask>[%krit teor%]</mask>
+	Критерии оценки теоретической подготовки
+	<type>text</type>
+	<mask>[%krit_teor%]</mask>
 	</field>
 	<field>
-	РљСЂРёС‚РµСЂРёРё РѕС†РµРЅРєРё СѓСЂРѕРІРЅСЏ С‚РµРѕСЂРµС‚РёС‡РµСЃРєРѕР№ РїРѕРґРіРѕС‚РѕРІРєРё
-	<type>krit lvl teor</type>
-	<mask>[%krit lvl teor%]</mask>
+	Критерии оценки уровня теоретической подготовки
+	<type>text</type>
+	<mask>[%krit_lvl_teor%]</mask>
 	</field>
 	<field>
-	РњР°РєСЃ. Р±Р°Р»Р» Р·Р° Р°С‚С‚РµСЃС‚.
-	<type>max atest</type>
-	<mask>[%max atest%]</mask>
+	Макс. балл за аттест.
+	<type>number</type>
+	<mask>[%max_atest%]</mask>
 	</field>
 	<field>
-	РЎРєРѕР»СЊРєРѕ РІРѕРїСЂРѕСЃРѕРІ
-	<type>question</type>
+	Сколько вопросов
+	<type>number</type>
 	<mask>[%question%]</mask>
 	</field>
 	<field>
-	РњР°РєСЃ. Р±Р°Р»Р» Р·Р° РІРѕРїСЂРѕСЃ 
-	<type>max quest</type>
-	<mask>[%max quest%]</mask>
+	Макс. балл за вопрос 
+	<type>number</type>
+	<mask>[%max_quest%]</mask>
 	</field>
 	<field>
-	РњРёРЅ. Р±Р°Р»Р» Р·Р° РІРѕРїСЂРѕСЃ
-	<type>min quest</type>
-	<mask>[%min quest%]</mask>
+	Мин. балл за вопрос
+	<type>number</type>
+	<mask>[%min_quest%]</mask>
 	</field>
 	<field>
-	РњР°РєСЃ. Р·Р° РІСЃРµ РІРѕРїСЂРѕСЃС‹
-	<type>max all quest</type>
-	<mask>[%max all quest%]</mask>
+	Макс. за все вопросы
+	<type>number</type>
+	<mask>[%max_all_quest%]</mask>
 	</field>
 	<field>
-	Р§С‚Рѕ РїСЂРµРґСЃС‚Р°РІР»СЏРµС‚ СЃРѕР±РѕР№ РїСЂР°РєС‚РёРєР°?
-	<type>pract</type>
+	Что представляет собой практика?
+	<type>text</type>
 	<mask>[%pract%]</mask>
 	</field>
 	<field>
-	РњР°РєСЃ. Р±Р°Р»Р»РѕРІ Р·Р° РїСЂР°РєС‚РёРєСѓ
-	<type>max pract</type>
-	<mask>[%max pract%]</mask>
+	Макс. баллов за практику
+	<type>number</type>
+	<mask>[%max_pract%]</mask>
 	</field>
 	<field>
-	РљСЂРёС‚РµСЂРёРё РѕС†РµРЅРєРё
-	<type>criterii</type>
+	Критерии оценки
+	<type>text</type>
 	<mask>[%criterii%]</mask>
 	</field>
 	<field>
-	Р’СЂРµРјСЏ РЅР° Р°С‚С‚РµСЃС‚Р°С†РёСЋ
-	<type>time atest</type>
-	<mask>[%time atest%]</mask>
+	Время на аттестацию
+	<type>text</type>
+	<mask>[%time_atest%]</mask>
 	</field>
 	<field>
-	РљРѕР»РёС‡РµСЃС‚РІРѕ С‡Р°СЃС‚РµР№ Р°С‚РµСЃС‚Р°С†РёРё
-	<type>colv atest</type>
-	<mask>[%colv atest%]</mask>
+	Количество частей атестации
+	<type>number</type>
+	<mask>[%colv_atest%]</mask>
 	</field>
 	<field>
-	Р’РѕРїСЂРѕСЃС‹ С‚РµРѕСЂС‚РёС‡РµСЃРєРѕР№ С‡Р°СЃС‚Рё
-	<type>teor</type>
+	Вопросы теортической части
+	<type>text</type>
 	<mask>[%teor%]</mask>
 	</field>
 	<field>
-	РџСЂР°РєС‚РёС‡РµСЃРєР°СЏ С‡Р°СЃС‚СЊ - СЌС‚Рѕ...
-	<type>pract sost</type>
-	<mask>[%pract sost%]</mask>
+	Практическая часть - это...
+	<type>text</type>
+	<mask>[%pract_sost%]</mask>
 	</field>
 	<field>
-	РЎРїРёСЃРѕРє РёСЃРїРѕР»СЊР·РѕРІР°РЅРЅРѕР№ Р»РёС‚РµСЂР°С‚СѓСЂС‹
-	<type>isp lit</type>
-	<mask>[%isp lit%]</mask>
+	Список использованной литературы
+	<type>text</type>
+	<mask>[%isp_lit%]</mask>
 	</field>
 	<field>
-	Р›РёС‚РµСЂР°С‚СѓСЂР° Рё РїРµСЂРµРёРѕРґРёС‡РµСЃРєРёРµ РёР·РґР°РЅРёСЏ
-	<type>litr</type>
+	Литература и переиодические издания
+	<type>text</type>
 	<mask>[%litr%]</mask>
 	</field>
 </doc>
