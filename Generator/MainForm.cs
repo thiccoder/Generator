@@ -1,5 +1,5 @@
 ﻿using Word = Microsoft.Office.Interop.Word;
-using System.Xml;
+using System.Text.Json;
 using MSHTML;
 using System.IO;
 
@@ -16,7 +16,7 @@ namespace Generator
         private int currentIdx = 0;
         private readonly string files = Environment.CurrentDirectory + "\\..\\..\\..\\files";
         private string CurrentTemplate = "";
-        private string CurrentXmlFile = "";
+        private string CurrentJsonFile = "";
         private string CurrentHtmlFile = "";
         private string CurrentSaveFile = "";
         public MainForm()
@@ -35,10 +35,10 @@ namespace Generator
                         ParseNodes(node);
                 }
         }
-        private void ReadXML(string fileName)
+        private void ReadCurrentJSON()
         {
-            XmlDocument doc = new();
-            doc.Load(fileName);
+            FileStream jsonfile = File.OpenRead(CurrentJsonFile);
+            JsonDocument doc = JsonDocument.Parse(jsonfile);
             treeView.Nodes.Clear();
             ParseNodes(doc.DocumentElement);
             TreeNode[] nodes = new TreeNode[fields.Count];

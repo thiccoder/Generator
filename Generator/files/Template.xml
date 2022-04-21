@@ -1,4 +1,3 @@
-<doc>
 	<field>
 	Дата
 	<type>date</type>
@@ -309,4 +308,3 @@
 	<type>text</type>
 	<mask>[%litr%]</mask>
 	</field>
-</doc>
