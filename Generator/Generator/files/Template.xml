@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<doc>
+	<field>
+	Дата
+	<type>date</type>
+	<mask>[%date%]</mask>
+	</field>
+	<field>
+	Название
+	<type>text</type>
+	<mask>[%name%]</mask>
+	</field>
+	<field>
+	Направленность
+	<type>text</type>
+	<mask>[%direction%]</mask>
+	</field>
+	<field>
+	Возраст
+	<type>number</type>
+	<mask>[%age%]</mask>
+	</field>
+	<field>
+	Время
+	<type>number</type>
+	<mask>[%time%]</mask>
+	</field>
+	<field>
+	Преподователь
+	<type>text</type>
+	<mask>[%prepod%]</mask>
+	</field>
+	<field>
+	Год
+	<type>number</type>
+	<mask>[%year%]</mask>
+	</field>
+	<field>
+	Уровень
+	<type>text</type>
+	<mask>[%level%]</mask>
+	</field>
+	<field>
+	Характеристика программы
+	<type>text</type>
+	<mask>[%userinput1%]</mask>
+	</field>
+	<field>
+	Чему способствует?
+	<type>text</type>
+	<mask>[%userinput2%]</mask>
+	</field>
+	<field>
+	Актуальность Программы обусловлена тем, что...
+	<type>text</type>
+	<mask>[%userinput3%]</mask>
+	</field>
+	<field>
+	Что предпологает программа?
+	<type>text</type>
+	<mask>[%userinput5%]</mask>
+	</field>
+	<field>
+	Принципы программы
+	<type>text</type>
+	<mask>[%userinput6%]</mask>
+	</field>
+	<field>
+	Новизна программы заключается...
+	<type>text</type>
+	<mask>[%userinput7%]</mask>
+	</field>
+	<field>
+	Цель программы
+	<type>text</type>
+	<mask>[%userinput8%]</mask>
+	</field>
+	<field>
+	Задачи обучения
+	<type>text</type>
+	<mask>[%userinput9%]</mask>
+	</field>
+	<field>
+	Развивающие задачи
+	<type>text</type>
+	<mask>[%userinput10%]</mask>
+	</field>
+	<field>
+	Воспитывающие задачи
+	<type>text</type>
+	<mask>[%userinput11%]</mask>
+	</field>
+	<field>
+	Оценка промежуточных результатов по темам
+	<type>text</type>
+	<mask>[%userinput12%]</mask>
+	</field>
+	<field>
+	Средство закрепления и повторения пройденного материала
+	<type>text</type>
+	<mask>[%userinput13%]</mask>
+	</field>
+	<field>
+	Как проводятся занятия
+	<type>text</type>
+	<mask>[%userinput14%]</mask>
+	</field>
+	<field>
+	На обучение по программе принимаются обучающиеся
+	<type>text</type>
+	<mask>[%userinput15%]</mask>
+	</field>
+	<field>
+	Человек в группах
+	<type>number</type>
+	<mask>[%humans%]</mask>
+	</field>
+	<field>
+	Занятий в неделю
+	<type>number</type>
+	<mask>[%v_nedeluy%]</mask>
+	</field>
+	<field>
+	По сколько часов
+	<type>number</type>
+	<mask>[%chasi%]</mask>
+	</field>
+	<field>
+	Форма обучения
+	<type>text</type>
+	<mask>[%form%]</mask>
+	</field>
+	<field>
+	Предметные результаты
+	<type>text</type>
+	<mask>[%userinput16%]</mask>
+	</field>
+	<field>
+	Обучающиеся должны знать
+	<type>text</type>
+	<mask>[%userinput37%]</mask>
+	</field>
+	<field>
+	Обучающиеся должны уметь
+	<type>text</type>
+	<mask>[%userinput38%]</mask>
+	</field>
+	<field>
+	userinput17
+	<type>userinput17</type>
+	<mask>[%userinput17%]</mask>
+	</field>
+	<field>
+	userinput18
+	<type>userinput18</type>
+	<mask>[%userinput18%]</mask>
+	</field>
+	<field>
+	userinput19
+	<type>userinput19</type>
+	<mask>[%userinput19%]</mask>
+	</field>
+	<field>
+	userinput20
+	<type>userinput20</type>
+	<mask>[%userinput20%]</mask>
+	</field>
+	<field>
+	Методы проведения занятий, по уровню активности
+	<type>text</type>
+	<mask>[%userinput21%]</mask>
+	</field>
+	<field>
+	Приёмы образовательной деятельности
+	<type>text</type>
+	<mask>[%userinput39%]</mask>
+	</field>
+	<field>
+	Основные образовательные процессы
+	<type>text</type>
+	<mask>[%userinput22%]</mask>
+	</field>
+	<field>
+	Материально-техническое обеспечение Программы
+	<type>text</type>
+	<mask>[%userinput40%]</mask>
+	</field>
+	<field>
+	Педагогические технологии
+	<type>text</type>
+	<mask>[%userinput23%]</mask>
+	</field>
+	<field>
+	Основные формы деятельности
+	<type>text</type>
+	<mask>[%userinput24%]</mask>
+	</field>
+	<field>
+	Формы организации учебных занятий в общем виде
+	<type>text</type>
+	<mask>[%obz_form_zan%]</mask>
+	</field>
+	<field>
+	Формы оорганизации учебных занятий(список)
+	<type>text</type>
+	<mask>[%form_zan%]</mask>
+	</field>
+	<field>
+	Типы учебных занятий
+	<type>text</type>
+	<mask>[%type_zan%]</mask>
+	</field>
+	<field>
+	Формы контроля результатов освоения общие
+	<type>text</type>
+	<mask>[%obz_test _rezult%]</mask>
+	</field>
+	<field>
+	Формы контроля результативности по датам-интервалам
+	<type>text</type>
+	<mask>[%test_rezult%]</mask>
+	</field>
+	<field>
+	Текущий контроль - это
+	<type>text</type>
+	<mask>[%tek_kontr%]</mask>
+	</field>
+	<field>
+	В конце обучения на специально запланированных итоговых занятиях...
+	<type>text</type>
+	<mask>[%v_konze%]</mask>
+	</field>
+	<field>
+	Критерии оценки теоретической подготовки
+	<type>text</type>
+	<mask>[%krit_teor%]</mask>
+	</field>
+	<field>
+	Критерии оценки уровня теоретической подготовки
+	<type>text</type>
+	<mask>[%krit_lvl_teor%]</mask>
+	</field>
+	<field>
+	Макс. балл за аттест.
+	<type>number</type>
+	<mask>[%max_atest%]</mask>
+	</field>
+	<field>
+	Сколько вопросов
+	<type>number</type>
+	<mask>[%question%]</mask>
+	</field>
+	<field>
+	Макс. балл за вопрос 
+	<type>number</type>
+	<mask>[%max_quest%]</mask>
+	</field>
+	<field>
+	Мин. балл за вопрос
+	<type>number</type>
+	<mask>[%min_quest%]</mask>
+	</field>
+	<field>
+	Макс. за все вопросы
+	<type>number</type>
+	<mask>[%max_all_quest%]</mask>
+	</field>
+	<field>
+	Что представляет собой практика?
+	<type>text</type>
+	<mask>[%pract%]</mask>
+	</field>
+	<field>
+	Макс. баллов за практику
+	<type>number</type>
+	<mask>[%max_pract%]</mask>
+	</field>
+	<field>
+	Критерии оценки
+	<type>text</type>
+	<mask>[%criterii%]</mask>
+	</field>
+	<field>
+	Время на аттестацию
+	<type>text</type>
+	<mask>[%time_atest%]</mask>
+	</field>
+	<field>
+	Количество частей атестации
+	<type>number</type>
+	<mask>[%colv_atest%]</mask>
+	</field>
+	<field>
+	Вопросы теортической части
+	<type>text</type>
+	<mask>[%teor%]</mask>
+	</field>
+	<field>
+	Практическая часть - это...
+	<type>text</type>
+	<mask>[%pract_sost%]</mask>
+	</field>
+	<field>
+	Список использованной литературы
+	<type>text</type>
+	<mask>[%isp_lit%]</mask>
+	</field>
+	<field>
+	Литература и переиодические издания
+	<type>text</type>
+	<mask>[%litr%]</mask>
+	</field>
+</doc>
