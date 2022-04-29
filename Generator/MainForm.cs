@@ -49,6 +49,10 @@ namespace Generator
         }
         private void ReadCurrentMetadata()
         {
+            fields.Clear();
+            controls.Clear();
+            treeNodes.Clear();
+            currentIdx = 0;
             string metadataString = File.ReadAllText(Globals.CurrentMetadataFile);
             JsonSerializerOptions options = new();
             options.Converters.Add(new Serialization.FieldConverter());
@@ -88,7 +92,8 @@ namespace Generator
                         Size = new Size(500, 500),
                         TabIndex = 0,
                         Enabled = false,
-                        Visible = false
+                        Visible = false,
+                        BorderStyle = BorderStyle.Fixed3D,
                     };
                     control = ctrl;
 
@@ -109,6 +114,7 @@ namespace Generator
                         Visible = false,
                         Minimum = field.Range.Item1,
                         Maximum = field.Range.Item2,
+                        BorderStyle = BorderStyle.Fixed3D,
                     };
                     control = ctrl;
                 }
@@ -127,7 +133,7 @@ namespace Generator
                                 Size = new Size(500, 25),
                                 TabIndex = 0,
                                 Enabled = false,
-                                Visible = false
+                                Visible = false,
                             };
                             TBC.Items.AddRange(DateTimeFormatInfo.CurrentInfo.MonthNames);
                             control = TBC;
@@ -146,6 +152,7 @@ namespace Generator
                                 Visible = false,
                                 Minimum = DateTime.UnixEpoch.Year,
                                 Maximum = DateTime.UnixEpoch.Year + 100,
+                                BorderStyle = BorderStyle.Fixed3D,
                             };
                             control = TBN;
                             break;
@@ -160,7 +167,7 @@ namespace Generator
                                 TabIndex = 0,
                                 Enabled = false,
                                 Visible = false,
-                                BackColor = SystemColors.Control
+                                BackColor = SystemColors.Control,
                             };
                             control = TBD;
                             break;
@@ -186,7 +193,8 @@ namespace Generator
                             control = TBC;
                             break;*/
                 controls.Add(control);
-                InputTreeSplit.Panel1.Controls.Add(control);
+                ToolTipSplit.Panel1.Controls.Add(control);
+                ToolTipLabel.Text = fields[i].ToolTip;
             }
             Fields.Nodes.AddRange(nodes);
             currentIdx = 0;
@@ -217,17 +225,16 @@ namespace Generator
 
             if (cf is TextField)
             {
-                cf.Value = controls[currentIdx].Text;
+                (cf as TextField).Value = controls[currentIdx].Text;
             }
             if (cf is NumericField)
             {
-                cf.Value = (controls[currentIdx] as NumericUpDown).Value;
+                (cf as NumericField).Value = (controls[currentIdx] as NumericUpDown).Value;
             }
             if (cf is DateTimeField)
             {
-                cf.Value = (controls[currentIdx] as MonthCalendar).SelectionStart.Date;
+                (cf as DateTimeField).Value = (controls[currentIdx] as MonthCalendar).SelectionStart;
             }
-
             if (ranges.ContainsKey(cf))
             {
                 string val = cf.ToString();
@@ -236,7 +243,6 @@ namespace Generator
                     r.pasteHTML(val);
                     r.collapse();
                     r.moveStart("character", -val.Length);
-                    r.select();
                 }
             }
 
@@ -245,6 +251,10 @@ namespace Generator
             currentIdx = idx;
             controls[currentIdx].Enabled = true;
             controls[currentIdx].Visible = true;
+            if (ranges.ContainsKey(fields[currentIdx])) 
+            {
+                ranges[fields[currentIdx]][0].select();
+            }
 
         }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -257,6 +267,7 @@ namespace Generator
         }
         private void Preview_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+            ranges.Clear();
             while (ranges.Count == 0)
             {
                 foreach (Field field in fields)
@@ -277,14 +288,15 @@ namespace Generator
 
         private void OpenTSMI_Click(object sender, EventArgs e)
         {
+            string prevTemplate =Globals.CurrentTemplateFile, prevMetadata = Globals.CurrentMetadataFile;
             OpenTemplate ot = new();
             if (ot.ShowDialog() == DialogResult.OK)
             {
-                if (Globals.CurrentMetadataFile != string.Empty)
+                if (Globals.CurrentMetadataFile != prevMetadata)
                 {
                     ReadCurrentMetadata();
                 }
-                if (Globals.CurrentTemplateFile != string.Empty)
+                if (Globals.CurrentTemplateFile != prevTemplate)
                 {
                     ReadCurrentTemplate();
                 }
@@ -338,6 +350,20 @@ namespace Generator
             Globals.CurrentSaveFile = string.Empty;
             SaveTSMI_Click(sender, e);
 
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            string templateFile = Directory.GetFiles(Globals.FilesDir, "*.dotx").FirstOrDefault(string.Empty);
+            string metadataFile = Directory.GetFiles(Globals.FilesDir, "*.json").FirstOrDefault(string.Empty);
+            
+            if (File.Exists(metadataFile) && File.Exists(templateFile)) 
+            {
+                Globals.CurrentMetadataFile = metadataFile;
+                Globals.CurrentTemplateFile = templateFile;
+                ReadCurrentMetadata();
+                ReadCurrentTemplate();
+            }
         }
     }
 }

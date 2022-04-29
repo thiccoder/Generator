@@ -38,6 +38,8 @@
             this.EditTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.InputTreeSplit = new System.Windows.Forms.SplitContainer();
+            this.ToolTipSplit = new System.Windows.Forms.SplitContainer();
+            this.ToolTipLabel = new System.Windows.Forms.Label();
             this.TreeBrowserSplit = new System.Windows.Forms.SplitContainer();
             this.Fields = new System.Windows.Forms.TreeView();
             this.Preview = new System.Windows.Forms.WebBrowser();
@@ -48,15 +50,19 @@
             this.MainSplit.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InputTreeSplit)).BeginInit();
+            this.InputTreeSplit.Panel1.SuspendLayout();
             this.InputTreeSplit.Panel2.SuspendLayout();
             this.InputTreeSplit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ToolTipSplit)).BeginInit();
+            this.ToolTipSplit.Panel2.SuspendLayout();
+            this.ToolTipSplit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TreeBrowserSplit)).BeginInit();
             this.TreeBrowserSplit.Panel1.SuspendLayout();
             this.TreeBrowserSplit.Panel2.SuspendLayout();
             this.TreeBrowserSplit.SuspendLayout();
             this.SuspendLayout();
             // 
-            // mainSplit
+            // MainSplit
             // 
             this.MainSplit.BackColor = System.Drawing.SystemColors.Control;
             this.MainSplit.Cursor = System.Windows.Forms.Cursors.HSplit;
@@ -64,86 +70,86 @@
             this.MainSplit.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.MainSplit.IsSplitterFixed = true;
             this.MainSplit.Location = new System.Drawing.Point(0, 0);
-            this.MainSplit.Name = "mainSplit";
+            this.MainSplit.Name = "MainSplit";
             this.MainSplit.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // mainSplit.Panel1
+            // MainSplit.Panel1
             // 
             this.MainSplit.Panel1.Controls.Add(this.MenuStrip);
             // 
-            // mainSplit.Panel2
+            // MainSplit.Panel2
             // 
             this.MainSplit.Panel2.Controls.Add(this.InputTreeSplit);
             this.MainSplit.Size = new System.Drawing.Size(985, 489);
             this.MainSplit.SplitterDistance = 25;
             this.MainSplit.TabIndex = 1;
             // 
-            // menuStrip
+            // MenuStrip
             // 
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileTSMI,
             this.EditTSMI,
             this.HelpTSMI});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip.Name = "menuStrip";
+            this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(985, 24);
             this.MenuStrip.TabIndex = 0;
             this.MenuStrip.Text = "menuStrip1";
             // 
-            // fileTSMI
+            // FileTSMI
             // 
             this.FileTSMI.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenTSMI,
             this.SaveTSMI,
             this.SaveAsTSMI,
             this.QuitTSMI});
-            this.FileTSMI.Name = "fileTSMI";
+            this.FileTSMI.Name = "FileTSMI";
             this.FileTSMI.Size = new System.Drawing.Size(37, 20);
             this.FileTSMI.Text = "File";
             // 
-            // openTSMI
+            // OpenTSMI
             // 
-            this.OpenTSMI.Name = "openTSMI";
+            this.OpenTSMI.Name = "OpenTSMI";
             this.OpenTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.OpenTSMI.Size = new System.Drawing.Size(190, 22);
             this.OpenTSMI.Text = "Оpen";
             this.OpenTSMI.Click += new System.EventHandler(this.OpenTSMI_Click);
             // 
-            // saveTSMI
+            // SaveTSMI
             // 
-            this.SaveTSMI.Name = "saveTSMI";
+            this.SaveTSMI.Name = "SaveTSMI";
             this.SaveTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.SaveTSMI.Size = new System.Drawing.Size(190, 22);
             this.SaveTSMI.Text = "Save";
             this.SaveTSMI.Click += new System.EventHandler(this.SaveTSMI_Click);
             // 
-            // saveAsTSMI
+            // SaveAsTSMI
             // 
-            this.SaveAsTSMI.Name = "saveAsTSMI";
+            this.SaveAsTSMI.Name = "SaveAsTSMI";
             this.SaveAsTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
             this.SaveAsTSMI.Size = new System.Drawing.Size(190, 22);
             this.SaveAsTSMI.Text = "Save as";
             this.SaveAsTSMI.Click += new System.EventHandler(this.SaveAsTSMI_Click);
             // 
-            // quitTSMI
+            // QuitTSMI
             // 
-            this.QuitTSMI.Name = "quitTSMI";
+            this.QuitTSMI.Name = "QuitTSMI";
             this.QuitTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.QuitTSMI.ShowShortcutKeys = false;
             this.QuitTSMI.Size = new System.Drawing.Size(190, 22);
             this.QuitTSMI.Text = "Quit";
             this.QuitTSMI.Click += new System.EventHandler(this.QuitTSMI_Click);
             // 
-            // editTSMI
+            // EditTSMI
             // 
-            this.EditTSMI.Name = "editTSMI";
+            this.EditTSMI.Name = "EditTSMI";
             this.EditTSMI.Size = new System.Drawing.Size(39, 20);
             this.EditTSMI.Text = "Edit";
             // 
-            // helpTSMI
+            // HelpTSMI
             // 
-            this.HelpTSMI.Name = "helpTSMI";
+            this.HelpTSMI.Name = "HelpTSMI";
             this.HelpTSMI.Size = new System.Drawing.Size(44, 20);
             this.HelpTSMI.Text = "Help";
             // 
@@ -157,6 +163,7 @@
             // 
             // InputTreeSplit.Panel1
             // 
+            this.InputTreeSplit.Panel1.Controls.Add(this.ToolTipSplit);
             this.InputTreeSplit.Panel1.Cursor = System.Windows.Forms.Cursors.Default;
             // 
             // InputTreeSplit.Panel2
@@ -165,6 +172,39 @@
             this.InputTreeSplit.Size = new System.Drawing.Size(985, 460);
             this.InputTreeSplit.SplitterDistance = 360;
             this.InputTreeSplit.TabIndex = 0;
+            // 
+            // ToolTipSplit
+            // 
+            this.ToolTipSplit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ToolTipSplit.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.ToolTipSplit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ToolTipSplit.Location = new System.Drawing.Point(0, 0);
+            this.ToolTipSplit.Name = "ToolTipSplit";
+            this.ToolTipSplit.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // ToolTipSplit.Panel1
+            // 
+            this.ToolTipSplit.Panel1.Cursor = System.Windows.Forms.Cursors.Default;
+            // 
+            // ToolTipSplit.Panel2
+            // 
+            this.ToolTipSplit.Panel2.Controls.Add(this.ToolTipLabel);
+            this.ToolTipSplit.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ToolTipSplit.Size = new System.Drawing.Size(360, 460);
+            this.ToolTipSplit.SplitterDistance = 315;
+            this.ToolTipSplit.TabIndex = 0;
+            // 
+            // ToolTipLabel
+            // 
+            this.ToolTipLabel.AutoSize = true;
+            this.ToolTipLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ToolTipLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ToolTipLabel.Location = new System.Drawing.Point(0, 0);
+            this.ToolTipLabel.Name = "ToolTipLabel";
+            this.ToolTipLabel.Size = new System.Drawing.Size(45, 15);
+            this.ToolTipLabel.TabIndex = 0;
+            this.ToolTipLabel.Text = "ToolTip";
+            this.ToolTipLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TreeBrowserSplit
             // 
@@ -187,29 +227,29 @@
             this.TreeBrowserSplit.SplitterDistance = 216;
             this.TreeBrowserSplit.TabIndex = 0;
             // 
-            // treeView
+            // Fields
             // 
             this.Fields.BackColor = System.Drawing.SystemColors.Control;
             this.Fields.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Fields.HideSelection = false;
             this.Fields.Location = new System.Drawing.Point(0, 0);
-            this.Fields.Name = "treeView";
+            this.Fields.Name = "Fields";
             this.Fields.Size = new System.Drawing.Size(212, 456);
             this.Fields.TabIndex = 1;
             this.Fields.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_AfterSelect);
             // 
-            // webBrowser
+            // Preview
             // 
             this.Preview.AllowWebBrowserDrop = false;
             this.Preview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Preview.IsWebBrowserContextMenuEnabled = false;
             this.Preview.Location = new System.Drawing.Point(0, 0);
-            this.Preview.Name = "webBrowser";
+            this.Preview.Name = "Preview";
             this.Preview.Size = new System.Drawing.Size(397, 456);
             this.Preview.TabIndex = 2;
             this.Preview.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.Preview_DocumentCompleted);
             // 
-            // saveFileDialog
+            // SaveFileDialog
             // 
             this.SaveFileDialog.Filter = "Word document files (*.docx)|*.docx|All files (*.*)|*.*";
             // 
@@ -225,6 +265,7 @@
             this.Name = "MainForm";
             this.Text = "Generator";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.MainSplit.Panel1.ResumeLayout(false);
             this.MainSplit.Panel1.PerformLayout();
             this.MainSplit.Panel2.ResumeLayout(false);
@@ -232,9 +273,14 @@
             this.MainSplit.ResumeLayout(false);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
+            this.InputTreeSplit.Panel1.ResumeLayout(false);
             this.InputTreeSplit.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.InputTreeSplit)).EndInit();
             this.InputTreeSplit.ResumeLayout(false);
+            this.ToolTipSplit.Panel2.ResumeLayout(false);
+            this.ToolTipSplit.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ToolTipSplit)).EndInit();
+            this.ToolTipSplit.ResumeLayout(false);
             this.TreeBrowserSplit.Panel1.ResumeLayout(false);
             this.TreeBrowserSplit.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TreeBrowserSplit)).EndInit();
@@ -258,6 +304,8 @@
         private ToolStripMenuItem EditTSMI;
         private ToolStripMenuItem HelpTSMI;
         private SaveFileDialog SaveFileDialog;
+        private SplitContainer ToolTipSplit;
+        private Label ToolTipLabel;
     }
 }
 

@@ -23,15 +23,15 @@ namespace Generator
     public class Field
     {
         [JsonIgnore]
-        public object Value = "";
+        public object Value = string.Empty;
         [JsonInclude]
-        public object Default = "";
+        public object Default = string.Empty;
         [JsonInclude]
-        public string Name = "";
+        public string Name = string.Empty;
         [JsonInclude]
-        public string Mask = "";
+        public string Mask = string.Empty;
         [JsonInclude]
-        public string ToolTip = "";
+        public string ToolTip = string.Empty;
         public override string ToString()
         {
             return Value.ToString();
@@ -51,9 +51,9 @@ namespace Generator
     public class TextField : Field
     {
         [JsonIgnore]
-        public new string Value = "";
+        public new string Value = string.Empty;
         [JsonInclude]
-        public new string Default = "";
+        public new string Default = string.Empty;
         [JsonInclude]
         public bool Multiline = false;
         public override string ToString()
@@ -110,7 +110,7 @@ namespace Generator
                 DateTimeFieldFlags.ShowHour => Value.Hour.ToString(),
                 DateTimeFieldFlags.ShowMinute => Value.Minute.ToString(),
                 DateTimeFieldFlags.ShowSecond => Value.Second.ToString(),
-                _ => "",
+                _ => string.Empty,
             };
             return s;
         }

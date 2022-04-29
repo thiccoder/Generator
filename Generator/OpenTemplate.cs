@@ -15,7 +15,23 @@ namespace Generator
         }
         public void OpenTemplate_Load(object sender, EventArgs e)
         {
-            string templateFile = Directory.GetFiles(Globals.FilesDir, "*.dotx").FirstOrDefault(string.Empty), metadataFile = Directory.GetFiles(Globals.FilesDir, "*.json").FirstOrDefault(string.Empty);
+            string templateFile, metadataFile;
+            if (Globals.CurrentTemplateFile == string.Empty)
+            {
+                templateFile = Directory.GetFiles(Globals.FilesDir, "*.dotx").FirstOrDefault(string.Empty);
+            }
+            else
+            {
+                templateFile = Globals.CurrentTemplateFile;
+            }
+            if (Globals.CurrentMetadataFile == string.Empty)
+            {
+                metadataFile = Directory.GetFiles(Globals.FilesDir, "*.json").FirstOrDefault(string.Empty);
+            }
+            else
+            {
+                metadataFile = Globals.CurrentMetadataFile;
+            }
             MetadataPathBox.Text = metadataFile;
             metadataSet = File.Exists(metadataFile);
             TemplatePathBox.Text = templateFile;
@@ -41,7 +57,7 @@ namespace Generator
                     Globals.CurrentMetadataFile = senderBox.Text;
                 }
                 else
-                { 
+                {
                     metadataSet = false;
                 }
             }
@@ -69,7 +85,7 @@ namespace Generator
 
         private void MetadataBrowseButton_Click(object sender, EventArgs e)
         {
-            OpenDialog.Filter = OpenDialog.Filter.Replace("Template files (*.dotx)|*.dotx", "Metadata files (*.json)|*.json");
+            OpenDialog.Filter = "Metadata files (*.json)|*.json|All Files (*.*)|*.*";
             if (OpenDialog.ShowDialog() == DialogResult.OK)
             {
                 MetadataPathBox.Text = OpenDialog.FileName;
@@ -77,7 +93,7 @@ namespace Generator
         }
         private void TemplateBrowseButton_Click(object sender, EventArgs e)
         {
-            OpenDialog.Filter = OpenDialog.Filter.Replace("Metadata files (*.json) | *.json", "Template files (*.dotx)|*.dotx");
+            OpenDialog.Filter = "Template files (*.dotx)|*.dotx|All Files (*.*)|*.*";
             if (OpenDialog.ShowDialog() == DialogResult.OK)
             {
                 TemplatePathBox.Text = OpenDialog.FileName;
