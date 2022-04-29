@@ -2,6 +2,7 @@
 using System.Text.Json;
 using MSHTML;
 using System.IO;
+using System.Globalization;
 
 namespace Generator
 {
@@ -9,21 +10,60 @@ namespace Generator
     {
 
         private readonly Word.Application wordApp = new() { Visible = false };
-        private List<Field> fields;
+        private List<Field> fields = new();
         private readonly List<TreeNode> treeNodes = new();
         private readonly List<Control> controls = new();
-        private readonly Dictionary<Field, IHTMLTxtRange> ranges = new();
+        private readonly Dictionary<Field, List<IHTMLTxtRange>> ranges = new();
         private int currentIdx = 0;
-
+        private IHTMLTxtRange range;
         public MainForm()
         {
             InitializeComponent();
         }
+        private bool FindString(HtmlElement elem, string str)
+        {
+            bool strFound = false;
+            try
+            {
+                if (range != null)
+                {
+                    range.collapse(false);
+                    strFound = range.findText(str, 1000000000, 0);
+                }
+                if (range == null)
+                {
+                    IHTMLDocument2 doc = elem.Document.DomDocument as IHTMLDocument2;
 
+                    IHTMLBodyElement body = doc.body as IHTMLBodyElement;
+
+                    range = body.createTextRange();
+                    range.moveToElementText(elem.DomElement as IHTMLElement);
+                    strFound = range.findText(str, 1000000000, 0);
+                }
+            }
+            catch
+            {
+
+            }
+            return strFound;
+        }
         private void ReadCurrentMetadata()
         {
             string metadataString = File.ReadAllText(Globals.CurrentMetadataFile);
-            fields = JsonSerializer.Deserialize<List<Field>>(metadataString);
+            JsonSerializerOptions options = new();
+            options.Converters.Add(new Serialization.FieldConverter());
+            fields = JsonSerializer.Deserialize<List<Field>>(metadataString, options);
+            foreach (var field in fields)
+            {
+                if (field is null)
+                {
+                    MessageBox.Show("null");
+                }
+                //else
+                //{
+                //    MessageBox.Show(field.Name + "\n" + field.GetType());
+                //}
+            }
             Fields.Nodes.Clear();
             TreeNode[] nodes = new TreeNode[fields.Count];
             for (int i = 0; i < nodes.Length; i++)
@@ -31,74 +71,120 @@ namespace Generator
                 nodes[i] = new TreeNode(fields[i].Name);
                 treeNodes.Add(nodes[i]);
                 Control control;
-                switch (fields[i].Type)
+                if (fields[i] is TextField)
                 {
-                    case FieldType.Number:
-                        NumericUpDown TBN = new()
-                        {
-                            AllowDrop = true,
-                            BackColor = SystemColors.Control,
-                            Dock = DockStyle.Fill,
-                            Location = new Point(0, 0),
-                            Name = "control",
-                            Size = new Size(500, 500),
-                            TabIndex = 0,
-                            Enabled = false,
-                            Visible = false,
-                            Minimum = fields[i].MinVal,
-                            Maximum = fields[i].MaxVal,
-                        };
-                        control = TBN;
-                        break;
-                    case FieldType.Date:
-                        MonthCalendar TBD = new()
-                        {
-                            CalendarDimensions = new Size(3, 4),
-                            Dock = DockStyle.Fill,
-                            Location = new Point(0, 0),
-                            MaxSelectionCount = 1,
-                            Name = "control",
-                            TabIndex = 0,
-                            Enabled = false,
-                            Visible = false,
-                            BackColor = SystemColors.Control
-                        };
-                        control = TBD;
-                        break;
-                    case FieldType.Choice:
-                        ComboBox TBC = new()
-                        {
-                            Dock = DockStyle.Fill,
-                            FormattingEnabled = true,
-                            Location = new Point(0, 0),
-                            Name = "control",
-                            Size = new Size(500, 25),
-                            TabIndex = 0,
-                            Enabled = false,
-                            Visible = false
-                        };
-                        TBC.Items.AddRange(fields[i].Options.ToArray());
-                        control = TBC;
-                        break;
-                    default:
-                        TextBox TBT = new()
-                        {
-                            AcceptsReturn = true,
-                            AcceptsTab = true,
-                            AllowDrop = true,
-                            BackColor = SystemColors.Control,
-                            Dock = DockStyle.Fill,
-                            Location = new Point(0, 0),
-                            Multiline = true,
-                            Name = "control",
-                            Size = new Size(500, 500),
-                            TabIndex = 0,
-                            Enabled = false,
-                            Visible = false
-                        };
-                        control = TBT;
-                        break;
+
+                    TextField field = fields[i] as TextField;
+                    TextBox ctrl = new()
+                    {
+                        AcceptsReturn = true,
+                        AcceptsTab = true,
+                        AllowDrop = true,
+                        BackColor = SystemColors.Control,
+                        Dock = DockStyle.Fill,
+                        Location = new Point(0, 0),
+                        Multiline = field.Multiline,
+                        Name = "control",
+                        Size = new Size(500, 500),
+                        TabIndex = 0,
+                        Enabled = false,
+                        Visible = false
+                    };
+                    control = ctrl;
+
                 }
+                else if (fields[i] is NumericField)
+                {
+                    NumericField field = fields[i] as NumericField;
+                    NumericUpDown ctrl = new()
+                    {
+                        AllowDrop = true,
+                        BackColor = SystemColors.Control,
+                        Dock = DockStyle.Fill,
+                        Location = new Point(0, 0),
+                        Name = "control",
+                        Size = new Size(500, 500),
+                        TabIndex = 0,
+                        Enabled = false,
+                        Visible = false,
+                        Minimum = field.Range.Item1,
+                        Maximum = field.Range.Item2,
+                    };
+                    control = ctrl;
+                }
+                else if (fields[i] is DateTimeField)
+                {
+                    DateTimeField field = fields[i] as DateTimeField;
+                    switch (field.Flags)
+                    {
+                        case DateTimeFieldFlags.ShowMonth:
+                            ComboBox TBC = new()
+                            {
+                                Dock = DockStyle.Fill,
+                                FormattingEnabled = true,
+                                Location = new Point(0, 0),
+                                Name = "control",
+                                Size = new Size(500, 25),
+                                TabIndex = 0,
+                                Enabled = false,
+                                Visible = false
+                            };
+                            TBC.Items.AddRange(DateTimeFormatInfo.CurrentInfo.MonthNames);
+                            control = TBC;
+                            break;
+                        case DateTimeFieldFlags.ShowYear:
+                            NumericUpDown TBN = new()
+                            {
+                                AllowDrop = true,
+                                BackColor = SystemColors.Control,
+                                Dock = DockStyle.Fill,
+                                Location = new Point(0, 0),
+                                Name = "control",
+                                Size = new Size(500, 500),
+                                TabIndex = 0,
+                                Enabled = false,
+                                Visible = false,
+                                Minimum = DateTime.UnixEpoch.Year,
+                                Maximum = DateTime.UnixEpoch.Year + 100,
+                            };
+                            control = TBN;
+                            break;
+                        default:
+                            MonthCalendar TBD = new()
+                            {
+                                CalendarDimensions = new Size(3, 4),
+                                Dock = DockStyle.Fill,
+                                Location = new Point(0, 0),
+                                MaxSelectionCount = 1,
+                                Name = "control",
+                                TabIndex = 0,
+                                Enabled = false,
+                                Visible = false,
+                                BackColor = SystemColors.Control
+                            };
+                            control = TBD;
+                            break;
+                    }
+                }
+                else
+                {
+                    control = new Label() { Text="null"} ;
+                }
+                /*case Fieldfields[i].Choice:
+                            ComboBox TBC = new()
+                            {
+                                Dock = DockStyle.Fill,
+                                FormattingEnabled = true,
+                                Location = new Point(0, 0),
+                                Name = "control",
+                                Size = new Size(500, 25),
+                                TabIndex = 0,
+                                Enabled = false,
+                                Visible = false
+                            };
+                            TBC.Items.AddRange(fields[i].Options.ToArray());
+                            control = TBC;
+                            break;*/
                 controls.Add(control);
                 InputTreeSplit.Panel1.Controls.Add(control);
             }
@@ -128,23 +214,37 @@ namespace Generator
         {
             int idx = treeNodes.IndexOf(e.Node);
             Field cf = fields[currentIdx];
-            if (cf.Type != FieldType.Date)
+
+            if (cf is TextField)
+            {
                 cf.Value = controls[currentIdx].Text;
-            else cf.Value = (controls[currentIdx] as MonthCalendar).SelectionStart.Date.ToLongDateString().Trim('.');
-            controls[currentIdx].Enabled = false;
-            controls[currentIdx].Visible = false;
-            controls[idx].Enabled = true;
-            controls[idx].Visible = true;
-            currentIdx = idx;
-            cf = fields[currentIdx];
+            }
+            if (cf is NumericField)
+            {
+                cf.Value = (controls[currentIdx] as NumericUpDown).Value;
+            }
+            if (cf is DateTimeField)
+            {
+                cf.Value = (controls[currentIdx] as MonthCalendar).SelectionStart.Date;
+            }
+
             if (ranges.ContainsKey(cf))
             {
-                IHTMLTxtRange range = ranges[cf];
-                range.pasteHTML(cf.Value);
-                range.collapse();
-                range.moveStart("character", -cf.Value.Length);
-                range.select();
+                string val = cf.ToString();
+                foreach (IHTMLTxtRange r in ranges[cf])
+                {
+                    r.pasteHTML(val);
+                    r.collapse();
+                    r.moveStart("character", -val.Length);
+                    r.select();
+                }
             }
+
+            controls[currentIdx].Enabled = false;
+            controls[currentIdx].Visible = false;
+            currentIdx = idx;
+            controls[currentIdx].Enabled = true;
+            controls[currentIdx].Visible = true;
 
         }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -159,25 +259,17 @@ namespace Generator
         {
             while (ranges.Count == 0)
             {
-                if (Preview.Document != null)
+                foreach (Field field in fields)
                 {
-                    if (Preview.Document.DomDocument is IHTMLDocument2 doc)
+                    range = null;
+                    ranges[field] = new();
+                    while (FindString(Preview.Document.Body, field.Mask))
                     {
-                        if (doc.body is IHTMLBodyElement bodyElement)
-                        {
-                            foreach (Field field in fields)
-                            {
-                                IHTMLTxtRange range = bodyElement.createTextRange();
-                                if (range != null)
-                                {
-                                    string search = field.Mask;
-                                    if (range.findText(search, search.Length, 2))
-                                    {
-                                        ranges[field] = range;
-                                    }
-                                }
-                            }
-                        }
+                        var r = range.duplicate();
+                        ranges[field].Add(r);
+                        r.pasteHTML(field.Mask.ToUpper());
+                        r.collapse();
+                        r.moveStart("character", -field.Mask.Length);
                     }
                 }
             }
@@ -225,7 +317,7 @@ namespace Generator
             foreach (Field field in fields)
             {
                 find.Text = field.Mask;
-                find.Replacement.Text = field.Value;
+                find.Replacement.Text = field.ToString();
                 find.Execute(FindText: oMissing,
                   MatchCase: true,
                   MatchWholeWord: true,
@@ -237,7 +329,7 @@ namespace Generator
                   Format: false,
                   ReplaceWith: oMissing, Replace: replace);
             }
-            doc.SaveAs(FileName: Globals.CurrentSaveFile);
+            doc.SaveAs(FileName: Globals.CurrentSaveFile, FileFormat: Word.WdSaveFormat.wdFormatDocumentDefault);
             doc.Close();
         }
         private void SaveAsTSMI_Click(object sender, EventArgs e)

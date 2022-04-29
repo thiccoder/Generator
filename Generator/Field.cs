@@ -1,23 +1,126 @@
-﻿using System.Xml;
-using System.Collections.Generic;
+﻿
+using System.Globalization;
+using System.Text.Json.Serialization;
+
 namespace Generator
 {
+    [Flags]
+    public enum DateTimeFieldFlags
+    {
+        None = 0,
+        ShowYear = 1,
+        ShowMonth = 2,
+        ShowDay = 4,
+        ShowHour = 8,
+        ShowMinute = 16,
+        ShowSecond = 32,
+        Date = ShowYear | ShowMonth | ShowDay,
+        Time = ShowHour | ShowMinute | ShowSecond,
+        All = Date | Time,
+        Default = Date,
+    }
+
     public class Field
     {
-        public string Value = string.Empty;
-        public string Name { get; set; }
-        public string Mask { get; set; }
-        public FieldType Type { get; set; }
-        public string Default { get; set; }
-        public int MinVal = int.MinValue;
-        public int MaxVal = int.MaxValue;
-        public List<string>? Options { get; set; }
+        [JsonIgnore]
+        public object Value = "";
+        [JsonInclude]
+        public object Default = "";
+        [JsonInclude]
+        public string Name = "";
+        [JsonInclude]
+        public string Mask = "";
+        [JsonInclude]
+        public string ToolTip = "";
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
+        [JsonConstructor]
+        public Field()
+        {
+
+        }
+        public Field(string name, string mask, string toolTip)
+        {
+            Name = name;
+            Mask = mask;
+            ToolTip = toolTip;
+        }
     }
-    public enum FieldType 
+    public class TextField : Field
     {
-        Text = 0,
-        Number,
-        Date,
-        Choice 
+        [JsonIgnore]
+        public new string Value = "";
+        [JsonInclude]
+        public new string Default = "";
+        [JsonInclude]
+        public bool Multiline = false;
+        public override string ToString()
+        {
+            return Value;
+        }
+        [JsonConstructor]
+        public TextField() : base()
+        {
+        }
+        public TextField(string name, string mask, string toolTip, bool multiline) : base(name, mask, toolTip)
+        {
+            Multiline = multiline;
+        }
+    }
+    public class NumericField : Field
+    {
+        [JsonIgnore]
+        public new decimal Value = 0;
+        [JsonInclude]
+        public new decimal Default = 0;
+        [JsonInclude]
+        public Tuple<decimal, decimal> Range = new(decimal.MinValue, decimal.MaxValue);
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
+        [JsonConstructor]
+        public NumericField() : base()
+        {
+        }
+        public NumericField(string name, string mask, string toolTip, Tuple<decimal, decimal> range) : base(name, mask, toolTip)
+        {
+            Range = range;
+        }
+    }
+    public class DateTimeField : Field
+    {
+        [JsonIgnore]
+        public new DateTime Value = DateTime.Now;
+        [JsonInclude]
+        public new DateTime Default = DateTime.UnixEpoch;
+        [JsonInclude]
+        public DateTimeFieldFlags Flags;
+        public override string ToString()
+        {
+            string s = Flags switch
+            {
+                DateTimeFieldFlags.Date => Value.ToLongDateString(),
+                DateTimeFieldFlags.Time => Value.ToLongTimeString(),
+                DateTimeFieldFlags.ShowYear => Value.Year.ToString(),
+                DateTimeFieldFlags.ShowMonth => DateTimeFormatInfo.CurrentInfo.GetMonthName(Value.Month),
+                DateTimeFieldFlags.ShowDay => Value.Day.ToString(),
+                DateTimeFieldFlags.ShowHour => Value.Hour.ToString(),
+                DateTimeFieldFlags.ShowMinute => Value.Minute.ToString(),
+                DateTimeFieldFlags.ShowSecond => Value.Second.ToString(),
+                _ => "",
+            };
+            return s;
+        }
+        [JsonConstructor]
+        public DateTimeField() : base()
+        {
+        }
+        public DateTimeField(string pname, string pmask, string ptooltip, DateTimeFieldFlags flags) : base(pname, pmask, ptooltip)
+        {
+            Flags = flags;
+        }
     }
 }

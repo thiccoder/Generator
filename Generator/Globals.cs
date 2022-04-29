@@ -1,5 +1,5 @@
 ﻿using System;
-
+using MSHTML;
 namespace Generator
 {
     internal static class Globals
@@ -15,5 +15,6 @@ namespace Generator
         public static string CurrentMetadataFile = string.Empty;
         public static string CurrentHtmlFile = Path.GetTempFileName();
         public static string CurrentSaveFile = string.Empty;
+        
     }
 }

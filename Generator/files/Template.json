@@ -1,497 +1,661 @@
-[{
-        "Name": "Дата",
-        "Mask": "[%date%]",
-        "Type": 2,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Название",
-        "Mask": "[%name%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Направленность",
-        "Type": 0,
-        "Mask": "[%direction%]",
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Возраст",
-        "Mask": "[%age%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Время",
-        "Mask": "[%time%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Преподователь",
-        "Mask": "[%prepod%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Год",
-
-        "Mask": "[%year%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Уровень",
-        "Mask": "[%level%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Характеристика программы",
-        "Mask": "[%userinput1%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Чему способствует?",
-        "Mask": "[%userinput2%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Актуальность Программы обусловлена тем, что...",
-        "Mask": "[%userinput3%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Что предпологает программа?",
-        "Mask": "[%userinput5%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Принципы программы",
-        "Mask": "[%userinput6%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Новизна программы заключается...",
-        "Mask": "[%userinput7%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Цель программы",
-        "Mask": "[%userinput8%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Задачи обучения",
-        "Mask": "[%userinput9%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Развивающие задачи",
-        "Mask": "[%userinput10%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Воспитывающие задачи",
-        "Mask": "[%userinput11%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Оценка промежуточных результатов по темам",
-        "Mask": "[%userinput12%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Средство закрепления и повторения пройденного материала",
-        "Mask": "[%userinput13%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Как проводятся занятия",
-        "Mask": "[%userinput14%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "На обучение по программе принимаются обучающиеся",
-        "Mask": "[%userinput15%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Человек в группах",
-        "Mask": "[%humans%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Занятий в неделю",
-        "Mask": "[%v_nedeluy%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "По сколько часов",
-        "Mask": "[%chasi%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Форма обучения",
-        "Mask": "[%form%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Предметные результаты",
-        "Mask": "[%userinput16%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Обучающиеся должны знать",
-        "Mask": "[%userinput37%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Обучающиеся должны уметь",
-        "Mask": "[%userinput38%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "userinput17",
-        "Mask": "[%userinput17%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "userinput18",
-        "Mask": "[%userinput18%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "userinput19",
-        "Mask": "[%userinput19%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "userinput20",
-        "Mask": "[%userinput20%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Методы проведения занятий, по уровню активности",
-        "Mask": "[%userinput21%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Приёмы образовательной деятельности",
-        "Mask": "[%userinput39%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Основные образовательные процессы",
-        "Mask": "[%userinput22%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Материально-техническое обеспечение Программы",
-        "Mask": "[%userinput40%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Педагогические технологии",
-        "Mask": "[%userinput23%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Основные формы деятельности",
-        "Mask": "[%userinput24%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Формы организации учебных занятий в общем виде",
-        "Mask": "[%obz_form_zan%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Формы оорганизации учебных занятий(список)",
-        "Mask": "[%form_zan%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Типы учебных занятий",
-        "Mask": "[%Type_zan%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Формы контроля результатов освоения общие",
-        "Mask": "[%obz_test _rezult%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Формы контроля результативности по датам-интервалам",
-        "Mask": "[%test_rezult%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Текущий контроль - это",
-        "Mask": "[%tek_kontr%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "В конце обучения на специально запланированных итоговых занятиях...",
-        "Mask": "[%v_konze%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Критерии оценки теоретической подготовки",
-        "Mask": "[%krit_teor%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Критерии оценки уровня теоретической подготовки",
-        "Mask": "[%krit_lvl_teor%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Макс. балл за аттест.",
-        "Mask": "[%max_atest%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Сколько вопросов",
-        "Mask": "[%question%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Макс. балл за вопрос",
-        "Mask": "[%max_quest%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Мин. балл за вопрос",
-        "Mask": "[%min_quest%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Макс. за все вопросы",
-        "Mask": "[%max_all_quest%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Что представляет собой практика?",
-        "Mask": "[%pract%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Макс. баллов за практику",
-        "Mask": "[%max_pract%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Критерии оценки",
-        "Mask": "[%criterii%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Время на аттестацию",
-        "Mask": "[%time_atest%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Количество частей атестации",
-        "Mask": "[%colv_atest%]",
-        "Type": 1,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Вопросы теортической части",
-        "Mask": "[%teor%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Практическая часть - это...",
-        "Mask": "[%pract_sost%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Список использованной литературы",
-        "Mask": "[%isp_lit%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null,
-        "MaxValue": 2147483647,
-        "MinValue": -2147483648
-    }, {
-        "Name": "Литература и переиодические издания",
-        "Mask": "[%litr%]",
-        "Type": 0,
-        "Default": "",
-        "Options": null
+[
+  {
+    "Type": 3,
+    "Parameters": {
+      "Default": "1970-01-01T00:00:00Z",
+      "Name": "Дата",
+      "Mask": "[%date%]",
+      "ToolTip": null,
+      "Flags": 7
     }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Название",
+      "Mask": "[%name%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Направленность",
+      "Mask": "[%direction%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "Возраст",
+      "Mask": "[%age%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "Время",
+      "Mask": "[%time%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Преподаватель",
+      "Mask": "[%prepod%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "Год",
+      "Mask": "[%year%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Уровень",
+      "Mask": "[%level%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Характеристика программы",
+      "Mask": "[%userinput1%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Чему способствует?",
+      "Mask": "[%userinput2%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Актуальность Программы",
+      "Mask": "[%userinput3%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Что предпологает программа?",
+      "Mask": "[%userinput5%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Принципы программы",
+      "Mask": "[%userinput6%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Новизна программы",
+      "Mask": "[%userinput7%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Цель программы",
+      "Mask": "[%userinput8%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Задачи обучения",
+      "Mask": "[%userinput9%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Развивающие задачи",
+      "Mask": "[%userinput10%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Воспитывающие задачи",
+      "Mask": "[%userinput11%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Оценка промежуточных результатов по темам",
+      "Mask": "[%userinput12%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Средство закрепления и повторения пройденного материала",
+      "Mask": "[%userinput13%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Как проводятся занятия",
+      "Mask": "[%userinput14%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "На обучение по программе принимаются обучающиеся",
+      "Mask": "[%userinput15%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "Человек в группах",
+      "Mask": "[%humans%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "Занятий в неделю",
+      "Mask": "[%v_nedeluy%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "По сколько часов",
+      "Mask": "[%chasi%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Форма обучения",
+      "Mask": "[%form%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Предметные результаты",
+      "Mask": "[%userinput16%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Обучающиеся должны знать",
+      "Mask": "[%userinput37%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Обучающиеся должны уметь",
+      "Mask": "[%userinput38%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "userinput17",
+      "Mask": "[%userinput17%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "userinput18",
+      "Mask": "[%userinput18%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "userinput19",
+      "Mask": "[%userinput19%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "userinput20",
+      "Mask": "[%userinput20%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Методы проведения занятий, поуровню активности",
+      "Mask": "[%userinput21%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Приёмы образовательной деятельности",
+      "Mask": "[%userinput39%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Основные образовательные процессы",
+      "Mask": "[%userinput22%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Материально-техническое обеспечение Программы",
+      "Mask": "[%userinput40%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Педагогические технологии",
+      "Mask": "[%userinput23%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Основные формы деятельности",
+      "Mask": "[%userinput24%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Формы организации учебных занятий в общем виде",
+      "Mask": "[%obz_form_zan%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Формы организации учебных занятий (список)",
+      "Mask": "[%form_zan%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Типы учебных занятий",
+      "Mask": "[%Type_zan%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Формы контроля результатов освоения общие",
+      "Mask": "[%obz_test_rezult%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Формы контроля результативности по датам-интервалам",
+      "Mask": "[%test_rezult%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Текущий контроль",
+      "Mask": "[%tek_kontr%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Вконце обучения на специально запланированных итоговых занятиях...",
+      "Mask": "[%v_konze%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Критерии оценки теоретической подготовки",
+      "Mask": "[%krit_teor%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Критерии оценки уровня теоретической подготовки",
+      "Mask": "[%krit_lvl_teor%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "Макс. балл за аттест.",
+      "Mask": "[%max_atest%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "Сколько вопросов",
+      "Mask": "[%question%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "Макс. балл за вопрос",
+      "Mask": "[%max_quest%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "Мин. балл за вопрос",
+      "Mask": "[%min_quest%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "Макс. за все вопросы",
+      "Mask": "[%max_all_quest%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Что представляет собой практика?",
+      "Mask": "[%pract%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "Макс. баллов за практику",
+      "Mask": "[%max_pract%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Критерии оценки",
+      "Mask": "[%criterii%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Время на аттестацию",
+      "Mask": "[%time_atest%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": -79228162514264337593543950335,
+        "Item2": 79228162514264337593543950335
+      },
+      "Name": "Количество частей аттестации",
+      "Mask": "[%colv_atest%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Вопросы теортической части",
+      "Mask": "[%teor%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Практическая часть - это...",
+      "Mask": "[%pract_sost%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Список использованной литературы",
+      "Mask": "[%isp_lit%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 1,
+    "Parameters": {
+      "Default": "",
+      "Multiline": true,
+      "Name": "Литература и переиодические издания",
+      "Mask": "[%litr%]",
+      "ToolTip": null
+    }
+  }
 ]
