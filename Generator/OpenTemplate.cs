@@ -16,21 +16,21 @@ namespace Generator
         public void OpenTemplate_Load(object sender, EventArgs e)
         {
             string templateFile, metadataFile;
-            if (Globals.CurrentTemplateFile == string.Empty)
+            if (DocumentProcessor.CurrentTemplateFile == string.Empty)
             {
-                templateFile = Directory.GetFiles(Globals.FilesDir, "*.dotx").FirstOrDefault(string.Empty);
+                templateFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.dotx").FirstOrDefault(string.Empty);
             }
             else
             {
-                templateFile = Globals.CurrentTemplateFile;
+                templateFile = DocumentProcessor.CurrentTemplateFile;
             }
-            if (Globals.CurrentMetadataFile == string.Empty)
+            if (DocumentProcessor.CurrentMetadataFile == string.Empty)
             {
-                metadataFile = Directory.GetFiles(Globals.FilesDir, "*.json").FirstOrDefault(string.Empty);
+                metadataFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.json").FirstOrDefault(string.Empty);
             }
             else
             {
-                metadataFile = Globals.CurrentMetadataFile;
+                metadataFile = DocumentProcessor.CurrentMetadataFile;
             }
             MetadataPathBox.Text = metadataFile;
             metadataSet = File.Exists(metadataFile);
@@ -54,7 +54,7 @@ namespace Generator
                 if (File.Exists(senderBox.Text))
                 {
                     metadataSet = true;
-                    Globals.CurrentMetadataFile = senderBox.Text;
+                    DocumentProcessor.CurrentMetadataFile = senderBox.Text;
                 }
                 else
                 {
@@ -66,7 +66,7 @@ namespace Generator
                 if (File.Exists(senderBox.Text))
                 {
                     templateSet = true;
-                    Globals.CurrentTemplateFile = senderBox.Text;
+                    DocumentProcessor.CurrentTemplateFile = senderBox.Text;
                 }
                 else
                 {

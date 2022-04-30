@@ -1,19 +1,12 @@
-﻿using Word = Microsoft.Office.Interop.Word;
-using System.Text.Json;
-using MSHTML;
-using System.IO;
-using System.Globalization;
+﻿using MSHTML;
 
 namespace Generator
 {
     public partial class MainForm : Form
     {
-
-        private readonly Word.Application wordApp = new() { Visible = false };
-        private List<Field> fields = new();
-        private readonly List<TreeNode> treeNodes = new();
         private readonly List<Control> controls = new();
         private readonly Dictionary<Field, List<IHTMLTxtRange>> ranges = new();
+        private string CurrentPreviewFile = string.Empty;
         private int currentIdx = 0;
         private IHTMLTxtRange range;
         public MainForm()
@@ -47,38 +40,17 @@ namespace Generator
             }
             return strFound;
         }
-        private void ReadCurrentMetadata()
+        public void ConstructFields()
         {
-            fields.Clear();
-            controls.Clear();
-            treeNodes.Clear();
-            currentIdx = 0;
-            string metadataString = File.ReadAllText(Globals.CurrentMetadataFile);
-            JsonSerializerOptions options = new();
-            options.Converters.Add(new Serialization.FieldConverter());
-            fields = JsonSerializer.Deserialize<List<Field>>(metadataString, options);
-            foreach (var field in fields)
-            {
-                if (field is null)
-                {
-                    MessageBox.Show("null");
-                }
-                //else
-                //{
-                //    MessageBox.Show(field.Name + "\n" + field.GetType());
-                //}
-            }
             Fields.Nodes.Clear();
-            TreeNode[] nodes = new TreeNode[fields.Count];
-            for (int i = 0; i < nodes.Length; i++)
+            foreach (var field in DocumentProcessor.Fields)
             {
-                nodes[i] = new TreeNode(fields[i].Name);
-                treeNodes.Add(nodes[i]);
+                Fields.Nodes.Add(new TreeNode(field.Name));
                 Control control;
-                if (fields[i] is TextField)
+                if (field is TextField)
                 {
 
-                    TextField field = fields[i] as TextField;
+                    TextField tfield = field as TextField;
                     TextBox ctrl = new()
                     {
                         AcceptsReturn = true,
@@ -87,7 +59,7 @@ namespace Generator
                         BackColor = SystemColors.Control,
                         Dock = DockStyle.Fill,
                         Location = new Point(0, 0),
-                        Multiline = field.Multiline,
+                        Multiline = tfield.Multiline,
                         Name = "control",
                         Size = new Size(500, 500),
                         TabIndex = 0,
@@ -98,9 +70,9 @@ namespace Generator
                     control = ctrl;
 
                 }
-                else if (fields[i] is NumericField)
+                else if (field is NumericField)
                 {
-                    NumericField field = fields[i] as NumericField;
+                    NumericField nfield = field as NumericField;
                     NumericUpDown ctrl = new()
                     {
                         AllowDrop = true,
@@ -112,16 +84,16 @@ namespace Generator
                         TabIndex = 0,
                         Enabled = false,
                         Visible = false,
-                        Minimum = field.Range.Item1,
-                        Maximum = field.Range.Item2,
+                        Minimum = nfield.Range.Item1,
+                        Maximum = nfield.Range.Item2,
                         BorderStyle = BorderStyle.Fixed3D,
                     };
                     control = ctrl;
                 }
-                else if (fields[i] is DateTimeField)
+                else if (field is DateTimeField)
                 {
-                    DateTimeField field = fields[i] as DateTimeField;
-                    switch (field.Flags)
+                    DateTimeField dtfield = field as DateTimeField;
+                    switch (dtfield.Flags)
                     {
                         case DateTimeFieldFlags.ShowMonth:
                             ComboBox TBC = new()
@@ -135,7 +107,7 @@ namespace Generator
                                 Enabled = false,
                                 Visible = false,
                             };
-                            TBC.Items.AddRange(DateTimeFormatInfo.CurrentInfo.MonthNames);
+                            TBC.Items.AddRange(System.Globalization.DateTimeFormatInfo.CurrentInfo.MonthNames);
                             control = TBC;
                             break;
                         case DateTimeFieldFlags.ShowYear:
@@ -175,53 +147,40 @@ namespace Generator
                 }
                 else
                 {
-                    control = new Label() { Text="null"} ;
+                    control = new Label() { Text = "null" };
                 }
-                /*case Fieldfields[i].Choice:
-                            ComboBox TBC = new()
-                            {
-                                Dock = DockStyle.Fill,
-                                FormattingEnabled = true,
-                                Location = new Point(0, 0),
-                                Name = "control",
-                                Size = new Size(500, 25),
-                                TabIndex = 0,
-                                Enabled = false,
-                                Visible = false
-                            };
-                            TBC.Items.AddRange(fields[i].Options.ToArray());
-                            control = TBC;
-                            break;*/
+                /*else if (field is ChoiceField)
+                {
+                    ChoiceField cfield = field as ChoiceField
+                    ComboBox TBC = new()
+                    {
+                        Dock = DockStyle.Fill,
+                        FormattingEnabled = true,
+                        Location = new Point(0, 0),
+                        Name = "control",
+                        Size = new Size(500, 25),
+                        TabIndex = 0,
+                        Enabled = false,
+                        Visible = false
+                    };
+                    TBC.Items.AddRange(cfield.Options.ToArray());
+                    control = TBC;
+                }*/
+
                 controls.Add(control);
                 ToolTipSplit.Panel1.Controls.Add(control);
-                ToolTipLabel.Text = fields[i].ToolTip;
+                ToolTipLabel.Text = field.ToolTip;
             }
-            Fields.Nodes.AddRange(nodes);
-            currentIdx = 0;
-            Fields.SelectedNode = nodes[0];
+            CurrentPreviewFile = DocumentProcessor.GetPreviewFile();
+            Preview.Navigate(CurrentPreviewFile);
+            Fields.SelectedNode = Fields.Nodes[0];
         }
-        private void ReadCurrentTemplate()
-        {
-            Word.Document doc = wordApp.Documents.Open(Globals.CurrentTemplateFile);
-            doc.Activate();
-            Convert(doc, Globals.CurrentHtmlFile, Word.WdSaveFormat.wdFormatHTML);
-            doc.Close();
-            Preview.Navigate(Globals.CurrentHtmlFile);
-        }
-        private static void Convert(Word.Document doc, string outFile, Word.WdSaveFormat format)
-        {
-            object oMissing = Type.Missing;
-            object oOutput = outFile;
-            object oFormat = format;
-            doc.SaveAs(ref oOutput, ref oFormat, ref oMissing, ref oMissing,
-              ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
-              ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing
-              );
-        }
+
+
         private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            int idx = treeNodes.IndexOf(e.Node);
-            Field cf = fields[currentIdx];
+            int idx = Fields.Nodes.IndexOf(e.Node);
+            Field cf = DocumentProcessor.Fields[currentIdx];
 
             if (cf is TextField)
             {
@@ -245,32 +204,32 @@ namespace Generator
                     r.moveStart("character", -val.Length);
                 }
             }
-
             controls[currentIdx].Enabled = false;
             controls[currentIdx].Visible = false;
             currentIdx = idx;
             controls[currentIdx].Enabled = true;
             controls[currentIdx].Visible = true;
-            if (ranges.ContainsKey(fields[currentIdx])) 
+            if (ranges.ContainsKey(DocumentProcessor.Fields[currentIdx]))
             {
-                ranges[fields[currentIdx]][0].select();
+                ranges[DocumentProcessor.Fields[currentIdx]].First().select();
             }
 
         }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            wordApp.Quit();
-            if (File.Exists(Globals.CurrentHtmlFile))
+            DocumentProcessor.Close();
+            if (File.Exists(CurrentPreviewFile))
             {
-                File.Delete(Globals.CurrentHtmlFile);
+                File.Delete(CurrentPreviewFile);
             }
+            CurrentPreviewFile = Path.GetTempFileName();
         }
         private void Preview_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             ranges.Clear();
             while (ranges.Count == 0)
             {
-                foreach (Field field in fields)
+                foreach (Field field in DocumentProcessor.Fields)
                 {
                     range = null;
                     ranges[field] = new();
@@ -288,17 +247,15 @@ namespace Generator
 
         private void OpenTSMI_Click(object sender, EventArgs e)
         {
-            string prevTemplate =Globals.CurrentTemplateFile, prevMetadata = Globals.CurrentMetadataFile;
+            string prevTemplate = DocumentProcessor.CurrentTemplateFile, prevMetadata = DocumentProcessor.CurrentMetadataFile;
+            DocumentProcessor.Clear();
             OpenTemplate ot = new();
             if (ot.ShowDialog() == DialogResult.OK)
             {
-                if (Globals.CurrentMetadataFile != prevMetadata)
+                if ((DocumentProcessor.CurrentMetadataFile != prevMetadata) && (DocumentProcessor.CurrentTemplateFile != prevTemplate))
                 {
-                    ReadCurrentMetadata();
-                }
-                if (Globals.CurrentTemplateFile != prevTemplate)
-                {
-                    ReadCurrentTemplate();
+                    DocumentProcessor.ReadDocuments();
+                    ConstructFields();
                 }
             }
 
@@ -309,60 +266,38 @@ namespace Generator
         }
         private void SaveTSMI_Click(object sender, EventArgs e)
         {
-            if (Globals.CurrentSaveFile == string.Empty)
+            if (DocumentProcessor.CurrentSaveFile == string.Empty)
             {
                 if (SaveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Globals.CurrentSaveFile = SaveFileDialog.FileName;
+                    DocumentProcessor.CurrentSaveFile = SaveFileDialog.FileName;
                 }
                 else
                 {
                     return;
                 }
             }
-            object oMissing = Type.Missing;
-            object wrap = Word.WdFindWrap.wdFindContinue;
-            object replace = Word.WdReplace.wdReplaceAll;
-            object oInput = Globals.CurrentTemplateFile;
-            Word.Document doc = wordApp.Documents.Open(ref oInput);
-            Word.Find find = wordApp.Selection.Find;
-            foreach (Field field in fields)
-            {
-                find.Text = field.Mask;
-                find.Replacement.Text = field.ToString();
-                find.Execute(FindText: oMissing,
-                  MatchCase: true,
-                  MatchWholeWord: true,
-                  MatchWildcards: false,
-                  MatchSoundsLike: oMissing,
-                  MatchAllWordForms: false,
-                  Forward: true,
-                  Wrap: wrap,
-                  Format: false,
-                  ReplaceWith: oMissing, Replace: replace);
-            }
-            doc.SaveAs(FileName: Globals.CurrentSaveFile, FileFormat: Word.WdSaveFormat.wdFormatDocumentDefault);
-            doc.Close();
+            DocumentProcessor.SaveDocuments();
         }
         private void SaveAsTSMI_Click(object sender, EventArgs e)
         {
 
-            Globals.CurrentSaveFile = string.Empty;
+            DocumentProcessor.CurrentSaveFile = string.Empty;
             SaveTSMI_Click(sender, e);
 
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            string templateFile = Directory.GetFiles(Globals.FilesDir, "*.dotx").FirstOrDefault(string.Empty);
-            string metadataFile = Directory.GetFiles(Globals.FilesDir, "*.json").FirstOrDefault(string.Empty);
-            
-            if (File.Exists(metadataFile) && File.Exists(templateFile)) 
+            string templateFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.dotx").FirstOrDefault(string.Empty);
+            string metadataFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.json").FirstOrDefault(string.Empty);
+
+            if (File.Exists(metadataFile) && File.Exists(templateFile))
             {
-                Globals.CurrentMetadataFile = metadataFile;
-                Globals.CurrentTemplateFile = templateFile;
-                ReadCurrentMetadata();
-                ReadCurrentTemplate();
+                DocumentProcessor.CurrentMetadataFile = metadataFile;
+                DocumentProcessor.CurrentTemplateFile = templateFile;
+                DocumentProcessor.ReadDocuments();
+                ConstructFields();
             }
         }
     }
