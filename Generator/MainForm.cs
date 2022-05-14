@@ -209,6 +209,8 @@ namespace Generator
             currentIdx = idx;
             controls[currentIdx].Enabled = true;
             controls[currentIdx].Visible = true;
+
+            ToolTipLabel.Text = DocumentProcessor.Fields[currentIdx].ToolTip;
             if (ranges.ContainsKey(DocumentProcessor.Fields[currentIdx]))
             {
                 ranges[DocumentProcessor.Fields[currentIdx]].First().select();

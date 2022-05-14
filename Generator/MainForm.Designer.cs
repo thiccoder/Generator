@@ -196,12 +196,11 @@
             // 
             // ToolTipLabel
             // 
-            this.ToolTipLabel.AutoSize = true;
             this.ToolTipLabel.Cursor = System.Windows.Forms.Cursors.Default;
             this.ToolTipLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ToolTipLabel.Location = new System.Drawing.Point(0, 0);
             this.ToolTipLabel.Name = "ToolTipLabel";
-            this.ToolTipLabel.Size = new System.Drawing.Size(45, 15);
+            this.ToolTipLabel.Size = new System.Drawing.Size(356, 137);
             this.ToolTipLabel.TabIndex = 0;
             this.ToolTipLabel.Text = "ToolTip";
             this.ToolTipLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -278,7 +277,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.InputTreeSplit)).EndInit();
             this.InputTreeSplit.ResumeLayout(false);
             this.ToolTipSplit.Panel2.ResumeLayout(false);
-            this.ToolTipSplit.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ToolTipSplit)).EndInit();
             this.ToolTipSplit.ResumeLayout(false);
             this.TreeBrowserSplit.Panel1.ResumeLayout(false);
