@@ -41,19 +41,19 @@
             this.TemplateGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // MetadataSelectBox
+            // MetadataPathBox
             // 
             this.MetadataPathBox.Location = new System.Drawing.Point(6, 22);
-            this.MetadataPathBox.Name = "MetadataSelectBox";
+            this.MetadataPathBox.Name = "MetadataPathBox";
             this.MetadataPathBox.Size = new System.Drawing.Size(320, 23);
             this.MetadataPathBox.TabIndex = 0;
             this.MetadataPathBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
-            // TemplateSelectBox
+            // TemplatePathBox
             // 
             this.TemplatePathBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TemplatePathBox.Location = new System.Drawing.Point(6, 22);
-            this.TemplatePathBox.Name = "TemplateSelectBox";
+            this.TemplatePathBox.Name = "TemplatePathBox";
             this.TemplatePathBox.Size = new System.Drawing.Size(320, 23);
             this.TemplatePathBox.TabIndex = 2;
             this.TemplatePathBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
@@ -119,7 +119,7 @@
             this.MetadataGroupBox.Size = new System.Drawing.Size(413, 57);
             this.MetadataGroupBox.TabIndex = 6;
             this.MetadataGroupBox.TabStop = false;
-            this.MetadataGroupBox.Text = "hot *.json files in your area";
+            this.MetadataGroupBox.Text = "Metadata files (*.json)";
             // 
             // TemplateGroupBox
             // 
@@ -130,26 +130,28 @@
             this.TemplateGroupBox.Size = new System.Drawing.Size(413, 52);
             this.TemplateGroupBox.TabIndex = 7;
             this.TemplateGroupBox.TabStop = false;
-            this.TemplateGroupBox.Text = "hot *.dotx files in your area";
+            this.TemplateGroupBox.Text = "Template files (*.dotx)";
             // 
             // OpenTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 175);
-            this.Icon = global::Generator.Properties.Resources.Icon;
             this.Controls.Add(this.TemplateGroupBox);
             this.Controls.Add(this.MetadataGroupBox);
             this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.ButtonOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = global::Generator.Properties.Resources.Icon;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OpenTemplate";
             this.Text = "Open";
             this.Load += new System.EventHandler(this.OpenTemplate_Load);
             this.MetadataGroupBox.ResumeLayout(false);
+            this.MetadataGroupBox.PerformLayout();
             this.TemplateGroupBox.ResumeLayout(false);
+            this.TemplateGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
