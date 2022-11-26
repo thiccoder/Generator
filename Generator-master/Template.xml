@@ -1,0 +1,313 @@
+﻿<doc>
+	<field>
+	Дата
+	<type>date</type>
+	<mask>[%date%]</mask>
+	</field>
+	<field>
+	Название
+	<type>name</type>
+	<mask>[%name%]</mask>
+	</field>
+	<field>
+	Направленность
+	<type>direction</type>
+	<mask>[%direction%]</mask>
+	</field>
+	<field>
+	Возраст
+	<type>age</type>
+	<mask>[%age%]</mask>
+	</field>
+	<field>
+	Время
+	<type>time</type>
+	<mask>[%time%]</mask>
+	</field>
+	<field>
+	Преподователь
+	<type>prepod</type>
+	<mask>[%prepod%]</mask>
+	</field>
+	<field>
+	Год
+	<type>year</type>
+	<mask>[%year%]</mask>
+	</field>
+	<field>
+	Уровень
+	<type>level</type>
+	<mask>[%level%]</mask>
+	</field>
+	<field>
+	Характеристика программы
+	<type>userinput1</type>
+	<mask>[%userinput1%]</mask>
+	</field>
+	<field>
+	Чему способствует?
+	<type>userinput2</type>
+	<mask>[%userinput2%]</mask>
+	</field>
+	<field>
+	Актуальность Программы обусловлена тем, что...
+	<type>userinput3</type>
+	<mask>[%userinput3%]</mask>
+	</field>
+	<field>
+	Что предпологает программа?
+	<type>userinput5</type>
+	<mask>[%userinput5%]</mask>
+	</field>
+	<field>
+	Принципы программы
+	<type>userinput6</type>
+	<mask>[%userinput6%]</mask>
+	</field>
+	<field>
+	Новизна программы заключается...
+	<type>userinput7</type>
+	<mask>[%userinput7%]</mask>
+	</field>
+	<field>
+	Цель программы
+	<type>userinput8</type>
+	<mask>[%userinput8%]</mask>
+	</field>
+	<field>
+	Задачи обучения
+	<type>userinput9</type>
+	<mask>[%userinput9%]</mask>
+	</field>
+	<field>
+	Развивающие задачи
+	<type>userinput10</type>
+	<mask>[%userinput10%]</mask>
+	</field>
+	<field>
+	Воспитывающие задачи
+	<type>userinput11</type>
+	<mask>[%userinput11%]</mask>
+	</field>
+	<field>
+	Оценка промежуточных результатов по темам
+	<type>userinput12</type>
+	<mask>[%userinput12%]</mask>
+	</field>
+	<field>
+	Средство закрепления и повторения пройденного материала
+	<type>userinput13</type>
+	<mask>[%userinput13%]</mask>
+	</field>
+	<field>
+	Как проводятся занятия
+	<type>userinput14</type>
+	<mask>[%userinput14%]</mask>
+	</field>
+	<field>
+	На обучение по программе принимаются обучающиеся
+	<type>userinput15</type>
+	<mask>[%userinput15%]</mask>
+	</field>
+	<field>
+	Человек в группах
+	<type>humans</type>
+	<mask>[%humans%]</mask>
+	</field>
+	<field>
+	Занятий в неделю
+	<type>V nedeluy</type>
+	<mask>[%v nedeluy%]</mask>
+	</field>
+	<field>
+	По сколько часов
+	<type>chasi</type>
+	<mask>[%chasi%]</mask>
+	</field>
+	<field>
+	Форма обучения
+	<type>form</type>
+	<mask>[%form%]</mask>
+	</field>
+	<field>
+	Предметные результаты
+	<type>userinput16</type>
+	<mask>[%userinput16%]</mask>
+	</field>
+	<field>
+	Обучающиеся должны знать
+	<type>userinput37</type>
+	<mask>[%userinput37%]</mask>
+	</field>
+	<field>
+	Обучающиеся должны уметь
+	<type>userinput38</type>
+	<mask>[%userinput38%]</mask>
+	</field>
+	<field>
+	userinput17
+	<type>userinput17</type>
+	<mask>[%userinput17%]</mask>
+	</field>
+	<field>
+	userinput18
+	<type>userinput18</type>
+	<mask>[%userinput18%]</mask>
+	</field>
+	<field>
+	userinput19
+	<type>userinput19</type>
+	<mask>[%userinput19%]</mask>
+	</field>
+	<field>
+	userinput20
+	<type>userinput20</type>
+	<mask>[%userinput20%]</mask>
+	</field>
+	<field>
+	Методы проведения занятий, по уровню активности
+	<type>userinput21</type>
+	<mask>[%userinput21%]</mask>
+	</field>
+	<field>
+	Приёмы образовательной деятельности
+	<type>userinput39</type>
+	<mask>[%userinput39%]</mask>
+	</field>
+	<field>
+	Основные образовательные процессы
+	<type>userinput22</type>
+	<mask>[%userinput22%]</mask>
+	</field>
+	<field>
+	Материально-техническое обеспечение Программы
+	<type>userinput40</type>
+	<mask>[%userinput40%]</mask>
+	</field>
+	<field>
+	Педагогические технологии
+	<type>userinput23</type>
+	<mask>[%userinput23%]</mask>
+	</field>
+	<field>
+	Основные формы деятельности
+	<type>userinput24</type>
+	<mask>[%userinput24%]</mask>
+	</field>
+	<field>
+	Формы организации учебных занятий в общем виде
+	<type>userinput25</type>
+	<mask>[%userinput25%]</mask>
+	</field>
+	<field>
+	Формы оорганизации учебных занятий(список)
+	<type>userinput41</type>
+	<mask>[%userinput41%]</mask>
+	</field>
+	<field>
+	Типы учебных занятий
+	<type>userinput26</type>
+	<mask>[%userinput26%]</mask>
+	</field>
+	<field>
+	Формы контроля результатов освоения общие
+	<type>userinput27</type>
+	<mask>[%userinput27%]</mask>
+	</field>
+	<field>
+	Формы контроля результативности по датам-интервалам
+	<type>userinput28</type>
+	<mask>[%userinput28%]</mask>
+	</field>
+	<field>
+	Текущий контроль - это
+	<type>userinput29</type>
+	<mask>[%userinput29%]</mask>
+	</field>
+	<field>
+	В конце обучения на специально запланированных итоговых занятиях...
+	<type>userinput30</type>
+	<mask>[%userinput30%]</mask>
+	</field>
+	<field>
+	Критерии оценки теоретической подготовки
+	<type>userinput31</type>
+	<mask>[%userinput31%]</mask>
+	</field>
+	<field>
+	Критерии оценки уровня теоретической подготовки
+	<type>userinput32</type>
+	<mask>[%userinput32%]</mask>
+	</field>
+	<field>
+	Макс. балл за аттест.
+	<type>max atest</type>
+	<mask>[%max atest%]</mask>
+	</field>
+	<field>
+	Сколько вопросов
+	<type>question</type>
+	<mask>[%question%]</mask>
+	</field>
+	<field>
+	Макс. балл за вопрос 
+	<type>max quest</type>
+	<mask>[%max quest%]</mask>
+	</field>
+	<field>
+	Мин. балл за вопрос
+	<type>min quest</type>
+	<mask>[%min quest%]</mask>
+	</field>
+	<field>
+	Макс. за все вопросы
+	<type>max all quest</type>
+	<mask>[%max all quest%]</mask>
+	</field>
+	<field>
+	Что представляет собой практика?
+	<type>pract</type>
+	<mask>[%pract%]</mask>
+	</field>
+	<field>
+	Макс. баллов за практику
+	<type>max pract</type>
+	<mask>[%max pract%]</mask>
+	</field>
+	<field>
+	Критерии оценки
+	<type>userinput33</type>
+	<mask>[%userinput33%]</mask>
+	</field>
+	<field>
+	Время на аттестацию
+	<type>time atest</type>
+	<mask>[%time atest%]</mask>
+	</field>
+	<field>
+	Количество частей атестации
+	<type>colv atest</type>
+	<mask>[%colv atest%]</mask>
+	</field>
+	<field>
+	Вопросы теортической части
+	<type>userinput34</type>
+	<mask>[%userinput34%]</mask>
+	</field>
+	<field>
+	Практическая часть - это...
+	<type>pract sost</type>
+	<mask>[%pract sost%]</mask>
+	</field>
+	<field>
+	userinput35
+	<type>userinput35</type>
+	<mask>[%userinput35%]</mask>
+	</field>
+	<field>
+	userinput36
+	<type>userinput36</type>
+	<mask>[%userinput36%]</mask>
+	</field>
+	<field>Save</field>
+</doc>
