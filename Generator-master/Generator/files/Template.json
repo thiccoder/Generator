@@ -70,11 +70,24 @@
     "Parameters": {
       "Default": 0,
       "Range": {
-        "Item1": -79228162514264337593543950335,
-        "Item2": 79228162514264337593543950335
+        "Item1": 2015,
+        "Item2": 2080
       },
       "Name": "Год",
       "Mask": "[%year%]",
+      "ToolTip": null
+    }
+  },
+  {
+    "Type": 2,
+    "Parameters": {
+      "Default": 0,
+      "Range": {
+        "Item1": 2015,
+        "Item2": 2080
+      },
+      "Name": "Год окончания",
+      "Mask": "[%next_year%]",
       "ToolTip": null
     }
   },
