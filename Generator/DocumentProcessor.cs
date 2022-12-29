@@ -3,10 +3,7 @@ using AODL.Document.Content.Text;
 using AODL.Document.Content;
 using AODL.Document.TextDocuments;
 using DDDN.OdtToHtml;
-using System;
 using System.Text.Json;
-using System.Reflection.Metadata;
-using System.Xml;
 
 namespace Generator
 {
@@ -24,20 +21,9 @@ namespace Generator
         public static string CurrentSaveFile = string.Empty;
         public static string GetPreviewFile()
         {
-            
             string output = Path.GetTempFileName().Replace(".tmp", ".html");
             string cssfile = output.Replace(".html", ".css");
-            /*
-            TextDocument doc = new();
-            Console.WriteLine(output);
-            doc.Load(CurrentTemplateFile);
-            FileStream htmlfile = File.OpenWrite(output);
-            doc.XmlDoc.Save(htmlfile);
-            htmlfile.Close();
-            doc.Dispose();
-            */
 
-            ///*
             OdtConvertedData convertedData = null;
             var odtConvertSettings = new OdtConvertSettings
             {
@@ -54,7 +40,6 @@ namespace Generator
                 File.WriteAllText(output, $"<html><head><meta charset=\"UTF-8\" /><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"{cssfile}\"></head>{convertedData.Html}</html>");
                 File.WriteAllText(cssfile, convertedData.Css);
             }
-            //*/
             return output;
         }
         public static void ReadDocuments()

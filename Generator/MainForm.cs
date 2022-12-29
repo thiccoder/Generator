@@ -1,5 +1,4 @@
 ﻿using MSHTML;
-using System.Runtime.InteropServices;
 
 namespace Generator
 {
@@ -10,9 +9,6 @@ namespace Generator
         private string CurrentPreviewFile = string.Empty;
         private int currentIdx = 0;
         private IHTMLTxtRange range;
-        [DllImport("Kernel32.dll")]
-        static extern Boolean AllocConsole();
-
         public MainForm()
         {
             InitializeComponent();
@@ -299,7 +295,8 @@ namespace Generator
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            string templateFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.dotx").FirstOrDefault(string.Empty);
+            string metadataFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.json").Where(x => !x.Split(Path.DirectorySeparatorChar).Last().StartsWith("Generator")).FirstOrDefault(string.Empty);
+            string templateFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.odt").FirstOrDefault(string.Empty);
 
             if (File.Exists(metadataFile) && File.Exists(templateFile))
             {
