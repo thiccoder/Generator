@@ -291,8 +291,8 @@ namespace Generator
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            string metadataFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.json").Where(x => !x.Split(Path.DirectorySeparatorChar).Last().StartsWith("Generator")).FirstOrDefault(string.Empty);
             string templateFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.dotx").FirstOrDefault(string.Empty);
-            string metadataFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.json").FirstOrDefault(string.Empty);
 
             if (File.Exists(metadataFile) && File.Exists(templateFile))
             {
