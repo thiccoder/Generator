@@ -18,7 +18,7 @@ namespace Generator
             string templateFile, metadataFile;
             if (DocumentProcessor.CurrentTemplateFile == string.Empty)
             {
-                templateFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.dotx").FirstOrDefault(string.Empty);
+                templateFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.odt").FirstOrDefault(string.Empty);
             }
             else
             {
@@ -93,7 +93,7 @@ namespace Generator
         }
         private void TemplateBrowseButton_Click(object sender, EventArgs e)
         {
-            OpenDialog.Filter = "Template files (*.dotx)|*.dotx|All Files (*.*)|*.*";
+            OpenDialog.Filter = "Template files (*.odt)|*.odt|All Files (*.*)|*.*";
             if (OpenDialog.ShowDialog() == DialogResult.OK)
             {
                 TemplatePathBox.Text = OpenDialog.FileName;

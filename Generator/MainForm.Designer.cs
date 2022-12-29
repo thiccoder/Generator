@@ -43,10 +43,6 @@
             this.Fields = new System.Windows.Forms.TreeView();
             this.Preview = new System.Windows.Forms.WebBrowser();
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.thereIsNoHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.noOneWillHearYourCryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.theSufferingWillBeEternalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enjoyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.MainSplit)).BeginInit();
             this.MainSplit.Panel1.SuspendLayout();
             this.MainSplit.Panel2.SuspendLayout();
@@ -144,12 +140,7 @@
             this.QuitTSMI.Click += new System.EventHandler(this.QuitTSMI_Click);
             // 
             // HelpTSMI
-            // 
-            this.HelpTSMI.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thereIsNoHelpToolStripMenuItem,
-            this.noOneWillHearYourCryToolStripMenuItem,
-            this.theSufferingWillBeEternalToolStripMenuItem,
-            this.enjoyToolStripMenuItem});
+            //
             this.HelpTSMI.Name = "HelpTSMI";
             this.HelpTSMI.Size = new System.Drawing.Size(44, 20);
             this.HelpTSMI.Text = "Help";
@@ -250,31 +241,7 @@
             // 
             // SaveFileDialog
             // 
-            this.SaveFileDialog.Filter = "Word document files (*.docx)|*.docx|All files (*.*)|*.*";
-            // 
-            // thereIsNoHelpToolStripMenuItem
-            // 
-            this.thereIsNoHelpToolStripMenuItem.Name = "thereIsNoHelpToolStripMenuItem";
-            this.thereIsNoHelpToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.thereIsNoHelpToolStripMenuItem.Text = "There is no help";
-            // 
-            // noOneWillHearYourCryToolStripMenuItem
-            // 
-            this.noOneWillHearYourCryToolStripMenuItem.Name = "noOneWillHearYourCryToolStripMenuItem";
-            this.noOneWillHearYourCryToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.noOneWillHearYourCryToolStripMenuItem.Text = "No one will hear your cry";
-            // 
-            // theSufferingWillBeEternalToolStripMenuItem
-            // 
-            this.theSufferingWillBeEternalToolStripMenuItem.Name = "theSufferingWillBeEternalToolStripMenuItem";
-            this.theSufferingWillBeEternalToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.theSufferingWillBeEternalToolStripMenuItem.Text = "The suffering will be eternal";
-            // 
-            // enjoyToolStripMenuItem
-            // 
-            this.enjoyToolStripMenuItem.Name = "enjoyToolStripMenuItem";
-            this.enjoyToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.enjoyToolStripMenuItem.Text = "Enjoy)";
+            this.SaveFileDialog.Filter = "OpenDocument Text files (*.odt)|*.odt|All files (*.*)|*.*";
             // 
             // MainForm
             // 
@@ -327,10 +294,6 @@
         private SaveFileDialog SaveFileDialog;
         private SplitContainer ToolTipSplit;
         private Label ToolTipLabel;
-        private ToolStripMenuItem thereIsNoHelpToolStripMenuItem;
-        private ToolStripMenuItem noOneWillHearYourCryToolStripMenuItem;
-        private ToolStripMenuItem theSufferingWillBeEternalToolStripMenuItem;
-        private ToolStripMenuItem enjoyToolStripMenuItem;
     }
 }
 

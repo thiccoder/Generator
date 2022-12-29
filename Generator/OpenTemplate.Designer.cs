@@ -130,7 +130,7 @@
             this.TemplateGroupBox.Size = new System.Drawing.Size(413, 52);
             this.TemplateGroupBox.TabIndex = 7;
             this.TemplateGroupBox.TabStop = false;
-            this.TemplateGroupBox.Text = "Template files (*.dotx)";
+            this.TemplateGroupBox.Text = "Template files (*.odt)";
             // 
             // OpenTemplate
             // 

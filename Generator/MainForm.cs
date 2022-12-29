@@ -1,4 +1,5 @@
 ﻿using MSHTML;
+using System.Runtime.InteropServices;
 
 namespace Generator
 {
@@ -9,6 +10,9 @@ namespace Generator
         private string CurrentPreviewFile = string.Empty;
         private int currentIdx = 0;
         private IHTMLTxtRange range;
+        [DllImport("Kernel32.dll")]
+        static extern Boolean AllocConsole();
+
         public MainForm()
         {
             InitializeComponent();
@@ -211,10 +215,14 @@ namespace Generator
             controls[currentIdx].Visible = true;
 
             ToolTipLabel.Text = DocumentProcessor.Fields[currentIdx].ToolTip;
-            if (ranges.ContainsKey(DocumentProcessor.Fields[currentIdx]))
+            try
             {
-                ranges[DocumentProcessor.Fields[currentIdx]].First().select();
+                if (ranges.ContainsKey(DocumentProcessor.Fields[currentIdx]))
+                {
+                    ranges[DocumentProcessor.Fields[currentIdx]].First().select();
+                }
             }
+            catch { }
 
         }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -291,9 +299,10 @@ namespace Generator
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            string templateFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.dotx").FirstOrDefault(string.Empty);
+            string templateFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.odt").FirstOrDefault(string.Empty);
             string metadataFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.json").FirstOrDefault(string.Empty);
-
+            if (!AllocConsole())
+                MessageBox.Show("Failed");
             if (File.Exists(metadataFile) && File.Exists(templateFile))
             {
                 DocumentProcessor.CurrentMetadataFile = metadataFile;
