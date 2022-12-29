@@ -299,10 +299,8 @@ namespace Generator
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            string templateFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.odt").FirstOrDefault(string.Empty);
-            string metadataFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.json").FirstOrDefault(string.Empty);
-            if (!AllocConsole())
-                MessageBox.Show("Failed");
+            string templateFile = Directory.GetFiles(DocumentProcessor.FilesDir, "*.dotx").FirstOrDefault(string.Empty);
+
             if (File.Exists(metadataFile) && File.Exists(templateFile))
             {
                 DocumentProcessor.CurrentMetadataFile = metadataFile;
